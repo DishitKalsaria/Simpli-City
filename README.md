@@ -1,18 +1,56 @@
-# The Continuum — Portfolio v3.6
+# Simpli-City
 
-Final refinement pass before GitHub deployment.
+### An interactive portfolio and resume experiences.
 
-- Responsive desktop/tablet/mobile layout
-- Mobile-friendly city scene and full-screen detail panels
-- Game layouts compact to viewport height; touch scrolling remains available on small screens with hidden scrollbars
-- CONNECT result score resized to prevent overlap
-- 1–5 star feedback across KNOW, BELIEVE and CONNECT
-- Optional shared leaderboard name across all games
-- Updated Apps Script schema for Player Name and top-five leaderboard display
-- Workshop copy cleaned and simplified
+Simpli-City is an interactive portfolio and resume that brings
+my professional experience, projects, research and interests to
+life through an explorable digital city.
 
-Before publishing, update the existing Apps Script deployment using `apps-script/Code.gs`, run `setupPortfolioAnalytics()` once, and create a new deployment version while keeping the current `/exec` URL.
+Instead of scrolling through a conventional resume, visitors
+can explore different sectors, enter The Continuum and discover
+my work through interactive experiences.
 
+## Explore the City
 
-## v3.8 Final content refinement
-Updated Healthcare and Manufacturing experience details, Living Room hobbies/languages, Trophy Room credentials and endorsements, and Skill Forge AI/ML skills. Functionality is unchanged from v3.7.
+- Energy — Data science and analytics
+- Manufacturing — Supply chain and data analytics
+- Healthcare — Audit appeals and process improvement
+- The Continuum — A seven-floor interactive portfolio
+- Connect — Professional connections
+
+## Inside The Continuum
+
+| Floor | Experience |
+|---|---|
+| 07 | The Arena — Interactive games |
+| 06 | The Wall of Fame — Community feedback |
+| 05 | The Workshop — Selected projects |
+| 04 | The Skill Forge — Technical and professional skills |
+| 03 | The Trophy Room — Credentials and recognition |
+| 02 | The Think Tank — Research and ideas |
+| 01 | The Living Room — Beyond the resume |
+
+## Play, Explore, Connect
+
+Three interactive games offer visitors a different way to
+engage with the portfolio:
+
+- KNOW — A collaborative team experience
+- BELIEVE — Discover the person behind the resume
+- CONNECT — Find connections across industries and ideas
+
+## Technology
+
+Built with React, Vite, JavaScript and CSS, with GitHub Pages
+hosting and Google Apps Script supporting selected interactive
+features.
+
+## Visit Simpli-City
+
+https://dishitkalsaria.github.io/Simpli-City/
+
+## About
+
+Created by Dishit Kalsaria.
+
+[GitHub](https://github.com/DishitKalsaria)

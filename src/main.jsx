@@ -1112,14 +1112,14 @@ function Panel({focus, selectedFloor, onClose, onBackFloor, onSelectFloor, onHov
 }
 
 function Scene({blend, focus, selectedFloor, hoverFloor, onSelect, lang}){
-  const [mobileScene,setMobileScene]=useState(()=>typeof window!=='undefined' && window.innerWidth<=700)
-  useEffect(()=>{ const onResize=()=>setMobileScene(window.innerWidth<=700); window.addEventListener('resize',onResize); return ()=>window.removeEventListener('resize',onResize) },[])
+  const [mobileScene,setMobileScene]=useState(()=>typeof window!=='undefined' && window.innerWidth<=900)
+  useEffect(()=>{ const onResize=()=>setMobileScene(window.innerWidth<=900); window.addEventListener('resize',onResize); return ()=>window.removeEventListener('resize',onResize) },[])
   const p = useMemo(()=>palette(blend), [blend])
   const transform = selectedFloor ? floorTransforms[selectedFloor] : focusTransforms[focus]
   const inactive = (id) => focus !== 'city' && focus !== id
   const barYs = [185,214,243,272,301,330,359,388,417]
   const highlightIndex = selectedFloor ? floorToHighlightIndex[selectedFloor] : (hoverFloor ? floorToHighlightIndex[hoverFloor] : null)
-  return <svg className="city-svg" viewBox="0 0 1600 740" preserveAspectRatio={mobileScene?"xMidYMid meet":"xMidYMid slice"}>
+  return <div className={`city-viewport ${focus!=='city'?'city-viewport-focused':''}`} aria-label="Interactive city skyline"><div className="city-scroll-track"><svg className="city-svg" viewBox="0 0 1600 740" preserveAspectRatio={mobileScene?"xMidYMid meet":"xMidYMid slice"}>
     <defs><linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={p.bgTop}/><stop offset="100%" stopColor={p.bgBottom}/></linearGradient><linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={p.wall}/><stop offset="100%" stopColor={p.wall2}/></linearGradient><linearGradient id="glassGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={p.glass} stopOpacity=".55"/><stop offset="100%" stopColor={p.glass}/></linearGradient><linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={p.ground}/><stop offset="100%" stopColor={p.bgTop}/></linearGradient><filter id="shadow" x="-20%" y="-10%" width="140%" height="130%"><feDropShadow dx="0" dy="8" stdDeviation="7" floodColor="#0B3D91" floodOpacity=".18"/></filter></defs>
     <rect width="1600" height="740" fill="url(#skyGrad)" />
     <g opacity={1-blend}><circle cx="1428" cy="70" r="28" fill={p.amber}/><ellipse cx="252" cy="66" rx="76" ry="20" fill={p.side} opacity=".32"/><ellipse cx="310" cy="70" rx="38" ry="14" fill={p.side} opacity=".28"/><ellipse cx="1380" cy="124" rx="86" ry="22" fill={p.side} opacity=".28"/><ellipse cx="1460" cy="126" rx="44" ry="16" fill={p.side} opacity=".24"/></g>
@@ -1145,6 +1145,7 @@ function Scene({blend, focus, selectedFloor, hoverFloor, onSelect, lang}){
         </text>
       </g>)}</>}
     </g></g></svg>
+  </div></div>
 }
 
 function PrivacyNotice({onClose}){
@@ -1177,13 +1178,28 @@ function App(){
 
   useEffect(()=>{ trackEvent('visit','','portfolio_load') },[])
 
-  useEffect(()=>{ const onWheel=(e)=>{ if(knowOpen || believeOpen || connectOpen) return; e.preventDefault(); const delta=Math.sign(e.deltaY)*Math.min(Math.abs(e.deltaY)/800,.12); setBlend(v=>Math.max(0,Math.min(1,v+delta))) }; const onTouchStart=(e)=>{ if(knowOpen || believeOpen || connectOpen) return; window.__touchY=e.touches[0].clientY }; const onTouchMove=(e)=>{ if(knowOpen || believeOpen || connectOpen) return; if(window.__touchY==null) return; e.preventDefault(); const dy=window.__touchY-e.touches[0].clientY; window.__touchY=e.touches[0].clientY; setBlend(v=>Math.max(0,Math.min(1,v+dy/840))) }; window.addEventListener('wheel',onWheel,{passive:false}); window.addEventListener('touchstart',onTouchStart,{passive:true}); window.addEventListener('touchmove',onTouchMove,{passive:false}); return ()=>{ window.removeEventListener('wheel',onWheel); window.removeEventListener('touchstart',onTouchStart); window.removeEventListener('touchmove',onTouchMove) } },[knowOpen,believeOpen,connectOpen])
+  // Desktop keeps the original wheel-driven sky. On touch devices, ordinary
+  // swipes must remain available for scrolling the city and portfolio content.
+  useEffect(()=>{
+    const onWheel=(event)=>{
+      if(knowOpen || believeOpen || connectOpen || privacyOpen) return
+      if(window.matchMedia('(max-width: 900px)').matches) return
+      if(event.target.closest('.left-panel, .privacy-backdrop, .know-shell, input, textarea, select')) return
+      event.preventDefault()
+      const delta=Math.sign(event.deltaY)*Math.min(Math.abs(event.deltaY)/800,.12)
+      setBlend(v=>Math.max(0,Math.min(1,v+delta)))
+    }
+    window.addEventListener('wheel',onWheel,{passive:false})
+    return ()=>window.removeEventListener('wheel',onWheel)
+  },[knowOpen,believeOpen,connectOpen,privacyOpen])
+  const gameActive=knowOpen || believeOpen || connectOpen
   const select=(id)=>{ if(id===focus){ setFocus('city'); setSelectedFloor(null); setHoverFloor(null); return } setFocus(id); setSelectedFloor(null); setHoverFloor(null) }
   const chooseLanguage=(code)=>{ setLanguage(code); setLangOpen(false) }
 
   return <main className={`app ${blend>.55 ? 'night' : ''}`}>
     <button className={`brand brand-btn ${focus !== 'city' ? 'brand-active' : ''}`} onClick={()=>select('telecom')}>DISHIT KALSARIA</button>
 
+    <button type="button" className="mobile-header-theme" onClick={()=>setBlend(v=>v>.55?0:1)} aria-label={blend>.55?'Night mode. Switch to day':'Day mode. Switch to night'} title={blend>.55?'Night mode':'Day mode'}><span aria-hidden="true">{blend>.55?'☾':'☀'}</span></button>
     <div className="language-control">
       <button className="plane-button" onClick={()=>setLangOpen(v=>!v)} aria-label="Change language" title="Language / Taal / Idioma / Langue">
         <span className="plane-icon">✈</span>
@@ -1201,10 +1217,15 @@ function App(){
     <div className={`masthead ${focus !== 'city' ? 'hidden' : ''}`}>
       <div className="eyebrow">{tr(language,'IDEAS INTO SYSTEMS')}</div>
       <h1>{tr(language,'Building practical systems for complex industries.')}</h1>
-      <p>{tr(language,'Click a structure to explore · Scroll anywhere for the day / night transition')}</p>
+      <p className="desktop-city-instructions">{tr(language,'Click a structure to explore · Scroll anywhere for the day / night transition')}</p>
     </div>
 
     <Scene blend={blend} focus={focus} selectedFloor={selectedFloor} hoverFloor={hoverFloor} onSelect={select} lang={language} />
+
+    {focus!=='city' && !gameActive && !privacyOpen && <nav className="mobile-panel-navigation" aria-label="Portfolio navigation">
+      <button type="button" onClick={()=>{if(focus==='tower' && selectedFloor){setSelectedFloor(null);setHoverFloor(null)} else {setFocus('city');setSelectedFloor(null);setHoverFloor(null)}}}>{focus==='tower' && selectedFloor?'← Back to tower':'← Back to city'}</button>
+      {focus==='tower' && selectedFloor && <button type="button" onClick={()=>{setFocus('city');setSelectedFloor(null);setHoverFloor(null)}}>⌂ City</button>}
+    </nav>}
     <AnimatePresence mode="wait">
       <Panel key={`${focus}-${selectedFloor || 'root'}-${language}`} focus={focus} selectedFloor={selectedFloor} onClose={()=>{ setFocus('city'); setSelectedFloor(null); setHoverFloor(null) }} onBackFloor={()=>{ setSelectedFloor(null); setHoverFloor(null) }} onSelectFloor={setSelectedFloor} onHoverFloor={setHoverFloor} onLeaveFloor={()=>setHoverFloor(null)} cards={cards} floors={floors} lang={language} onStartKnow={()=>{trackEvent('game_started','KNOW');setKnowOpen(true)}} onStartBelieve={()=>{trackEvent('game_started','BELIEVE');setBelieveOpen(true)}} onStartConnect={()=>{trackEvent('game_started','CONNECT');setConnectOpen(true)}} />
     </AnimatePresence>

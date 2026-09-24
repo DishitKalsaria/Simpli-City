@@ -743,3 +743,231 @@ button,a{font:inherit} button{cursor:pointer;border:0} a{text-decoration:none}
   .endorsement-grid{grid-template-columns:1fr}
   .endorsement-grid blockquote{font-size:9.5px;max-height:104px}
 }
+
+
+/* Simpli-City v1.1: phone-first presentation. Existing desktop rules are
+   intentionally untouched; these apply only below the mobile breakpoint. */
+.mobile-sector-nav,.mobile-panel-navigation{display:none}
+.city-viewport{position:absolute;inset:0;width:100%;height:100%}
+
+@media (max-width:900px){
+  html,body,#root{width:100%;height:100%;height:100dvh;overflow:hidden}
+  .app{width:100%;height:100%;height:100dvh;overflow:hidden}
+  .app button,.app a{-webkit-tap-highlight-color:transparent}
+  .brand{left:16px;top:max(14px,env(safe-area-inset-top));z-index:85;max-width:58%;line-height:1.4;text-align:left}
+  .language-control{z-index:86;top:max(10px,env(safe-area-inset-top));right:12px}
+  .language-menu{z-index:90}
+  .masthead{top:58px;left:18px;transform:none;width:calc(100% - 36px);text-align:left;z-index:22}
+  .masthead h1{max-width:370px;font-size:clamp(25px,6.1vw,35px);line-height:1.09;white-space:normal;text-wrap:balance}
+  .masthead .eyebrow{font-size:9px}
+  .desktop-city-instructions{display:none}
+  .city-viewport{top:154px;bottom:auto;left:0;width:100%;height:min(60dvh,535px);overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:none}
+  .city-viewport::-webkit-scrollbar{display:none}
+  .city-svg{position:relative;inset:auto;display:block;width:calc(min(60dvh,535px) * 2.162162);min-width:900px;height:100%;max-width:none;flex-shrink:0}
+  .city-viewport-focused{visibility:hidden;pointer-events:none}
+  .world{transition:none}
+  .mobile-sector-nav{display:flex;position:absolute;z-index:40;bottom:calc(35px + env(safe-area-inset-bottom));left:12px;right:12px;min-width:0;flex-direction:column;gap:9px;padding:14px 13px 11px;background:rgba(250,252,255,.93);backdrop-filter:blur(22px);border:1px solid rgba(92,121,162,.18);border-radius:22px;box-shadow:0 14px 36px rgba(16,42,87,.18)}
+  .mobile-sector-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'Space Grotesk',Inter,sans-serif;font-size:10px;font-weight:800;letter-spacing:.15em;color:#355780}
+  .mobile-time-toggle{min-height:40px;min-width:80px;padding:8px 12px;border-radius:999px;color:#1f4a82;background:#eaf2fc;border:1px solid #cadcf2;font-size:12px;letter-spacing:0;font-weight:750}
+  .mobile-sector-scroll{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 1px 6px}
+  .mobile-sector-scroll::-webkit-scrollbar{display:none}
+  .mobile-sector-scroll button{flex:0 0 auto;min-height:47px;display:flex;gap:10px;align-items:center;padding:0 14px;border-radius:13px;background:#fff;border:1px solid rgba(68,109,163,.21);box-shadow:0 5px 12px rgba(31,72,124,.05);color:#173c73;font-size:12px;font-weight:750}
+  .mobile-sector-scroll button span{font-size:15px;color:#3371c7}
+  .mobile-sector-nav>p{margin:0;color:#7189a5;font-size:10px;line-height:1.4}
+  .night .mobile-sector-nav{background:rgba(13,28,54,.95);border-color:rgba(140,164,208,.22)}
+  .night .mobile-sector-heading{color:#d4e4ff}
+  .night .mobile-sector-scroll button,.night .mobile-time-toggle{background:#1a3158;border-color:#36537f;color:#eef5ff}
+  .night .mobile-sector-nav>p{color:#adc2e0}
+
+  /* Panels are actual reading surfaces on phone; no SVG overlays. */
+  .left-panel,.left-panel.no-scroll{position:absolute;inset:58px 0 calc(72px + env(safe-area-inset-bottom)) 0;width:auto;height:auto;border-radius:22px 22px 0 0;border-left:0;border-right:0;border-bottom:0;padding:20px 18px 26px;overflow-x:hidden;overflow-y:auto!important;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;touch-action:pan-y;background:rgba(250,252,255,.98)}
+  .night .left-panel{background:rgba(10,22,48,.98)}
+  .left-panel .bottom-actions{display:none!important}
+  .left-panel>*{max-width:100%;min-width:0}
+  .left-panel .panel-eyebrow{line-height:1.5;overflow-wrap:anywhere}
+  .tower-panel .tower-panel-title{font-size:clamp(29px,7vw,38px);line-height:1.1}
+  .floor-list{display:grid;grid-template-columns:1fr;gap:10px;padding-bottom:10px}
+  .floor-list button,.floor-list button:last-child{grid-template-columns:38px 42px minmax(0,1fr);width:100%;min-height:75px;padding:12px 14px}
+  .floor-list strong{font-size:16px;line-height:1.25}
+  .mobile-panel-navigation{display:flex;position:absolute;bottom:0;left:0;right:0;z-index:78;gap:9px;align-items:center;justify-content:space-between;min-height:calc(65px + env(safe-area-inset-bottom));padding:10px 14px calc(10px + env(safe-area-inset-bottom));border-top:1px solid rgba(92,121,162,.17);background:rgba(251,253,255,.98);backdrop-filter:blur(20px)}
+  .mobile-panel-navigation button{flex:1;min-height:46px;padding:10px 14px;border-radius:13px;color:white;background:#0b3d91;font-size:13px;font-weight:750}
+  .mobile-panel-navigation button+button{flex:0 0 auto;background:#eaf1fa;color:#244d84}
+  .night .mobile-panel-navigation{background:rgba(9,22,46,.98);border-color:#253c61}
+  .night .mobile-panel-navigation button+button{background:#213a63;color:#e6f0ff}
+  .privacy-link{z-index:75;bottom:calc(6px + env(safe-area-inset-bottom));right:14px}
+  .mobile-panel-navigation~.privacy-link{right:14px}
+  .left-panel .compact-hero{grid-template-columns:48px minmax(0,1fr);gap:10px}
+  .left-panel .compact-title{font-size:clamp(20px,5.4vw,27px);overflow-wrap:anywhere}
+  .left-panel .hero-icon{width:48px;height:48px}
+  .left-panel .industry-layout,.left-panel .compact-columns.three,.left-panel .floor-grid,.left-panel .floor-grid.bottom,.left-panel .gym-grid,.left-panel .lab-grid,.left-panel .certificate-grid,.left-panel .wall-fame-grid,.left-panel .workshop-grid,.left-panel .think-topic-grid,.left-panel .think-feature-grid,.left-panel .public-feedback-grid{display:grid;grid-template-columns:minmax(0,1fr)}
+  .left-panel .industry-layout .app-box{grid-column:auto}
+  .left-panel .metric-strip{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .left-panel .metric-box{padding:10px 7px}
+  .left-panel .metric-box strong{font-size:clamp(11px,3.2vw,15px);overflow-wrap:anywhere}
+  .left-panel .profile-card{grid-template-columns:100px minmax(0,1fr);gap:12px}
+  .left-panel .profile-photo{width:100px;height:110px;object-fit:cover}
+  .left-panel .profile-name{font-size:24px}
+  .left-panel .connect-grid{grid-template-columns:minmax(0,1fr)}
+  .left-panel .endorsement-grid{display:grid;grid-template-columns:minmax(0,1fr)}
+  .left-panel .endorsement-grid blockquote{max-height:none;overflow:visible;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+  .left-panel .trophy-endorsements{overflow:visible}
+  .left-panel .living-language-grid{grid-template-columns:minmax(0,1fr)}
+  .left-panel .workshop-tile{min-width:0}
+  .left-panel img{max-width:100%}
+  .left-panel input,.left-panel textarea,.left-panel select{max-width:100%;font-size:16px}
+  .left-panel button,.left-panel a{touch-action:manipulation}
+
+  /* The three games use the same scoring/state, but a phone-sized surface. */
+  .know-shell{inset:0;padding:max(8px,env(safe-area-inset-top)) 8px calc(8px + env(safe-area-inset-bottom));overflow:hidden!important;height:100dvh}
+  .know-topbar{flex:0 0 auto;min-height:44px;gap:8px}
+  .know-close{width:44px;height:44px;flex-shrink:0}
+  .know-stage,.connect-shell .know-stage{height:auto!important;max-height:none!important;min-height:0;flex:1;overflow-x:hidden;overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;padding:16px 12px 24px}
+  .know-stage>*{max-width:100%;min-width:0}
+  .know-question-grid,.know-team-grid,.know-answer-grid,.know-video-grid,.know-result-layout,.know-result-side,.connect-bonus-grid{grid-template-columns:minmax(0,1fr)}
+  .know-video-grid{grid-template-areas:'you' 'maya' 'alex' 'priya' 'leo'}
+  .know-question-grid>*:last-child{grid-column:auto}
+  .know-answer-grid button,.believe-answers button,.connect-bonus-grid button{min-height:54px;touch-action:manipulation}
+  .know-phase-head,.know-cta,.know-footer-line{flex-wrap:wrap}
+  .know-score-row,.know-versus,.connect-score-hero{grid-template-columns:minmax(0,1fr)}
+  .know-score{font-size:clamp(52px,15vw,78px)}
+  .connect-result-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .connect-result-stats>div{min-width:0;padding:9px 5px}
+  .connect-result-stats b{font-size:clamp(15px,4.4vw,22px)}
+  .connect-form-row input,.connect-result input,.connect-result select,.connect-result textarea{font-size:16px;min-width:0}
+  .connect-letter{max-width:calc((100vw - 85px)/8)}
+  .privacy-backdrop{padding:12px;z-index:180}
+  .privacy-card{width:100%;max-height:calc(100dvh - 24px);overflow-y:auto}
+}
+@media(max-width:390px){
+  .masthead h1{font-size:24px}
+  .left-panel .metric-strip{grid-template-columns:minmax(0,1fr)}
+  .left-panel .profile-card{grid-template-columns:86px minmax(0,1fr)}
+  .left-panel .profile-photo{width:86px;height:100px}
+  .left-panel .profile-name{font-size:21px}
+  .mobile-sector-scroll button{font-size:11px}
+}
+@media(max-width:900px) and (max-height:650px){
+  .city-viewport{top:117px;height:calc(100dvh - 265px)}
+  .city-svg{width:calc((100dvh - 265px) * 2.162162);min-width:700px}
+  .masthead{top:49px}
+  .masthead h1{font-size:22px}
+  .mobile-sector-nav{padding:10px;gap:5px}
+  .mobile-sector-nav>p{display:none}
+}
+@media(max-width:900px){
+  .left-panel.no-scroll > *{flex-shrink:0}
+  .left-panel.no-scroll .floor-list{flex:0 0 auto}
+  .app:has(.mobile-panel-navigation) .privacy-link{bottom:calc(82px + env(safe-area-inset-bottom));right:12px}
+}
+
+
+/* v1.1 mobile final refinement — every selector below is phone/tablet scoped.
+   The existing desktop visual rules and game state are deliberately unchanged. */
+.mobile-header-theme{display:none}
+@media(max-width:900px){
+  /* The skyline itself is horizontally scrollable; SVG buildings and their labels are the navigation. */
+  .city-scroll-track{position:relative;width:max-content;height:100%;min-width:900px}
+  .city-scroll-track>.city-svg{position:relative;width:calc(min(60dvh,535px) * 2.162162);min-width:900px;height:100%;max-width:none}
+  .mobile-header-theme{display:grid;place-items:center;position:absolute;z-index:86;right:94px;top:max(10px,env(safe-area-inset-top));width:41px;height:41px;min-width:41px;padding:0;border-radius:50%;background:rgba(248,251,255,.82);border:1px solid rgba(92,121,162,.16);box-shadow:0 8px 24px rgba(16,42,87,.08);backdrop-filter:blur(12px);font-size:22px;line-height:1;color:#173c73;touch-action:manipulation}
+  .night .mobile-header-theme{background:rgba(10,22,48,.88);color:#dce8ff;border-color:rgba(140,164,208,.14)}
+  .language-control{right:10px}
+  /* The tower directory needs legible but compact tap targets. */
+  .tower-panel .floor-list{gap:8px;margin-top:12px}
+  .tower-panel .floor-list button,.tower-panel .floor-list button:last-child{min-height:62px;padding:9px 12px;grid-template-columns:34px 36px minmax(0,1fr);gap:6px;border-radius:13px}
+  .tower-panel .floor-list .floor-icon{width:34px;height:34px;border-radius:11px;font-size:15px}
+  .tower-panel .floor-list .floor-no{font-size:9px;padding:3px 6px}
+  .tower-panel .floor-list strong{font-size:14px;line-height:1.2}
+  /* Wall of Fame: small two-column metrics, full-width readable feedback,
+     and a dedicated input surface; the outer panel is the only scroller. */
+  .wall-of-fame-content{display:flex;flex-direction:column;gap:13px;min-height:0;flex:initial;overflow:visible}
+  .wall-of-fame-content .public-analytics-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:0}
+  .wall-of-fame-content .public-analytics-strip>div{min-height:63px;padding:9px 11px;border-radius:12px}
+  .wall-of-fame-content .public-analytics-strip span{font-size:9px;letter-spacing:.06em;line-height:1.3}
+  .wall-of-fame-content .public-analytics-strip strong{font-size:22px;margin-top:2px}
+  .wall-of-fame-content .wall-fame-grid{display:flex;flex-direction:column;gap:13px;min-height:0;flex:initial}
+  .wall-of-fame-content .wall-feedback-card,.wall-of-fame-content .wall-form-card{overflow:visible;min-height:0;padding:15px;border-radius:16px}
+  .wall-of-fame-content .public-feedback-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:9px}
+  .wall-of-fame-content .public-feedback-item{padding:12px;border-radius:12px}
+  .wall-of-fame-content .public-feedback-head strong{font-size:13px;white-space:normal}
+  .wall-of-fame-content .public-feedback-head span{font-size:13px}
+  .wall-of-fame-content .public-feedback-item small{font-size:11px;white-space:normal}
+  .wall-of-fame-content .public-feedback-item p{display:block;overflow-wrap:anywhere;overflow:visible;-webkit-line-clamp:unset;font-size:12px;line-height:1.55;margin-top:7px}
+  .wall-of-fame-content .feedback-identity-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+  .wall-of-fame-content .feedback-identity-grid input{min-height:42px}
+  .wall-of-fame-content .feedback-form{gap:10px}
+  .wall-of-fame-content .feedback-form textarea{min-height:110px;resize:vertical}
+  .wall-of-fame-content .star-picker button{font-size:26px;min-width:40px;min-height:42px}
+  .wall-of-fame-content .publish-consent{font-size:11px;line-height:1.5;gap:10px}
+  .wall-of-fame-content .publish-consent input{width:18px;height:18px;flex:none}
+  /* Arena tiles: compact, readable rows rather than tall desktop cards. */
+  .game-lounge-card{padding:14px}
+  .game-lounge-card .game-intro{gap:4px;margin-bottom:12px}
+  .game-lounge-card .game-tile-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:9px}
+  .game-lounge-card .game-tile{min-height:98px;padding:12px 14px;border-radius:15px;gap:4px}
+  .game-lounge-card .game-tile strong{font-size:17px;margin-top:3px}
+  .game-lounge-card .game-tile span{font-size:11px;margin-top:2px}
+  .game-lounge-card .game-player-result{margin-top:4px}
+  /* KNOW / BELIEVE: tune typography and spacing while preserving gameplay. */
+  .know-shell,.believe-shell,.connect-shell{gap:5px}
+  .know-shell .know-stage{padding:15px 13px 22px;border-radius:17px}
+  .know-shell .know-stage h1{font-size:clamp(23px,6.5vw,32px);line-height:1.16}
+  .know-shell .know-stage h2{font-size:clamp(20px,5.7vw,26px);line-height:1.2}
+  .know-shell .know-lead{font-size:12px;line-height:1.5}
+  .know-shell .know-question-grid,.know-shell .know-answer-grid{gap:9px}
+  .know-shell .know-question-grid button,.know-shell .know-answer-grid button,.believe-shell .believe-answers button{padding:11px 13px;border-radius:13px;min-height:52px}
+  .know-shell .know-result-layout{gap:14px}
+  /* CONNECT opening: keep name input stacked and consent/check controls
+     naturally below their related inputs, with centered intro content. */
+  .connect-shell .connect-start{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .connect-shell .connect-start h1{max-width:390px;margin:0 auto}
+  .connect-shell .connect-start>p{max-width:460px;margin:0 auto;line-height:1.5}
+  .connect-shell .connect-industry-grid{width:100%;max-width:460px;gap:9px}
+  .connect-shell .connect-rules{width:100%;max-width:460px;justify-content:center}
+  .connect-shell .connect-start .connect-player-name{display:flex;flex-direction:column;align-items:stretch;width:100%;max-width:360px;margin:4px auto 0;padding:11px;text-align:left;gap:7px}
+  .connect-shell .connect-start .connect-player-name label{min-width:0;flex-direction:row;gap:6px;align-items:baseline}
+  .connect-shell .connect-start .connect-player-name input{width:100%;max-width:none;min-height:43px}
+  .connect-shell .connect-start>.know-primary{width:100%;max-width:360px;min-height:45px;margin-top:3px}
+  .connect-shell .connect-start .connect-disclaimer{font-size:11px}
+  .connect-shell .connect-result .publish-consent{flex-wrap:nowrap}
+}
+@media(max-width:900px) and (max-height:650px){
+  .city-scroll-track>.city-svg{width:calc((100dvh - 265px) * 2.162162);min-width:700px}
+  .city-scroll-track{min-width:700px}
+}
+@media(max-width:390px){
+  .tower-panel .floor-list button,.tower-panel .floor-list button:last-child{min-height:60px;padding:8px}
+  .mobile-header-theme{right:60px}
+}
+@media(max-width:900px){
+  .brand{max-width:49%;font-size:10px;letter-spacing:.17em}
+  .city-viewport{height:min(69dvh,600px)}
+  .city-scroll-track>.city-svg{width:calc(min(69dvh,600px) * 2.162162)}
+  /* CONNECT answer must stack: input first, Check immediately beneath. */
+  .connect-shell .connect-form-row{display:flex;flex-direction:column;align-items:stretch;gap:9px;width:100%}
+  .connect-shell .connect-form-row input{width:100%;min-height:46px;flex:none}
+  .connect-shell .connect-form-row .know-primary{width:100%;min-height:46px;flex:none}
+  .connect-shell .connect-play{justify-content:flex-start;gap:12px}
+}
+@media(max-width:900px) and (max-height:650px){
+  .city-viewport{top:117px;height:calc(100dvh - 265px)}
+  .city-scroll-track>.city-svg{width:calc((100dvh - 265px) * 2.162162);min-width:700px}
+}
+
+/* Night-mode mobile shell: the entire viewport (header, city and surrounding space)
+   uses one dark palette. Desktop appearance remains untouched. */
+@media(max-width:900px){
+  .app.night{background:linear-gradient(180deg,#0d1b35 0%,#122342 100%)}
+  .app.night .brand{color:#edf4ff}
+  .app.night .masthead .eyebrow{color:#a9c3ee}
+  .app.night .masthead h1{color:#e9f1ff;text-shadow:0 1px 1px rgba(4,13,31,.17)}
+  .app.night .masthead p{color:#c1d2ec}
+  .app.night .privacy-link{background:rgba(19,39,70,.9);color:#cfdef5;border-color:rgba(157,182,224,.22)}
+  .mobile-header-theme:focus-visible,.plane-button:focus-visible{outline:2px solid #77abfa;outline-offset:3px}
+}
+@media(max-width:520px){
+  .mobile-header-theme{right:60px}
+  .plane-button{width:41px;height:41px;min-width:41px;padding:0;display:grid;place-items:center;border-radius:50%}
+  .plane-icon{font-size:21px}
+  .masthead{width:calc(100% - 36px);max-width:calc(100% - 36px)}
+  .masthead h1{overflow-wrap:normal;hyphens:none}
+}

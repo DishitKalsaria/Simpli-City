@@ -15,7 +15,7 @@ const LANGUAGES = [
 const TRANSLATIONS = {
   nl: {
     'IDEAS INTO SYSTEMS':'IDEEËN NAAR SYSTEMEN',
-    'Building practical systems for complex industries.':'Praktische systemen bouwen voor complexe sectoren.',
+    'Building practical solutions for complex industries.':'Praktische oplossingen bouwen voor complexe sectoren.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Klik op een gebouw om te verkennen · Scroll overal voor de dag-/nachtovergang',
     'HEALTHCARE OFFICE':'ZORGKANTOOR','UNDER CONSTRUCTION OFFICE':'KANTOOR IN AANBOUW','DISHIT TOWER':'HET CONTINUÜM','THE CONTINUUM':'HET CONTINUÜM','ENERGY OFFICE':'ENERGIEKANTOOR','MANUFACTURING OFFICE':'PRODUCTIEKANTOOR','CONNECT':'VERBINDEN',
     'Back to city':'Terug naar stad','Back to tower':'Terug naar toren','Choose a floor':'Kies een verdieping','Hover to highlight the matching tower floor. Click to open it.':'Beweeg over een verdieping om deze in de toren te markeren. Klik om te openen.',
@@ -36,7 +36,7 @@ const TRANSLATIONS = {
   },
   es: {
     'IDEAS INTO SYSTEMS':'IDEAS EN SISTEMAS',
-    'Building practical systems for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
+    'Building practical solutions for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Haz clic en una estructura para explorar · Desplázate para cambiar entre día y noche',
     'HEALTHCARE OFFICE':'OFICINA DE SALUD','UNDER CONSTRUCTION OFFICE':'OFICINA EN CONSTRUCCIÓN','DISHIT TOWER':'EL CONTINUUM','THE CONTINUUM':'EL CONTINUUM','ENERGY OFFICE':'OFICINA DE ENERGÍA','MANUFACTURING OFFICE':'OFICINA DE MANUFACTURA','CONNECT':'CONECTAR',
     'Back to city':'Volver a la ciudad','Back to tower':'Volver a la torre','Choose a floor':'Elige un piso','Hover to highlight the matching tower floor. Click to open it.':'Pasa el cursor para resaltar el piso correspondiente. Haz clic para abrirlo.',
@@ -57,7 +57,7 @@ const TRANSLATIONS = {
   },
   fr: {
     'IDEAS INTO SYSTEMS':'DES IDÉES AUX SYSTÈMES',
-    'Building practical systems for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
+    'Building practical solutions for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Cliquez sur une structure pour explorer · Faites défiler pour passer du jour à la nuit',
     'HEALTHCARE OFFICE':'BUREAU SANTÉ','UNDER CONSTRUCTION OFFICE':'BUREAU EN CONSTRUCTION','DISHIT TOWER':'LE CONTINUUM','THE CONTINUUM':'LE CONTINUUM','ENERGY OFFICE':'BUREAU ÉNERGIE','MANUFACTURING OFFICE':'BUREAU INDUSTRIE','CONNECT':'CONNECTER',
     'Back to city':'Retour à la ville','Back to tower':'Retour à la tour','Choose a floor':'Choisissez un étage','Hover to highlight the matching tower floor. Click to open it.':'Survolez pour mettre en évidence l’étage correspondant. Cliquez pour l’ouvrir.',
@@ -119,11 +119,11 @@ const buildingCards = {
     roleLabel: 'Data Scientist',
     timeline: 'May 2021 – Dec 2025',
     skills: ['Data products', 'Forecasting', 'Product ownership', 'Operational analytics'],
-    ratings: [['Data Products', '4.9'], ['Analytics', '4.8'], ['Leadership', '4.7']],
+    ratings: [['Data Products', '4.9'], ['Analytics', '4.5'], ['Leadership', '4.2']],
     applications: ['Snowflake', 'Salesforce', 'Power BI', 'Excel', 'Power Apps', 'Python', 'SQL'],
     highlights: [
       'Reduced manual effort by up to 80% and improved reporting cycle time by 65%.',
-      'Presented a live enterprise MVP demo to 500+ attendees and supported 50+ users.',
+      'Spearheaded UNIT; an enterprise data product that supported 50+ users and presented at NG Expo 2025 as a showcase of operational data products.',
       'Translated stakeholder needs into KPIs, backlog items, release priorities, and UAT.'
     ]
   },
@@ -134,9 +134,9 @@ const buildingCards = {
     metrics: [['Time Saved', '15 hrs/wk'], ['Money Saved', '$40K+/yr'], ['Users Helped', '15+ users']],
     company: 'Vijay Engineering Works',
     roleLabel: 'Supply Chain / Data Analyst',
-    timeline: 'Aug 2016 – Jul 2018',
+    timeline: 'Dec 2015 – Dec 2017',
     skills: ['Manufacturing analytics', 'BOM readiness', 'Inventory visibility', 'Quality tracking'],
-    ratings: [['Operations', '4.7'], ['Planning', '4.6'], ['Quality', '4.5']],
+    ratings: [['Operations', '4.0'], ['Planning', '3.9'], ['Quality', '4.5']],
     applications: ['SAP ERP', 'Excel', 'Power BI', 'MRP / Production planning', 'Supplier tracking', 'Quality reporting'],
     highlights: [
       'Built dashboards across production, backlog, dispatch, vendors, and quality.',
@@ -213,7 +213,7 @@ const floorData = [
     credentials:[["NASA's Human Rover Exploration Challenge 2017",'Representing India as part of Team Technovators'],['Institute of Engineering Technology (IET)',"Joint Secretary of Electronics and Telecomm. Department of IET's NMIMS chapter."]],
     endorsements:[
       '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team.” — Manager, National Grid',
-      '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team. This appreciate award is a small recognition for your efforts. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
+      '“This appreciate award is a small recognition for your efforts, Dishit. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
     ]
   },
   {
@@ -1216,7 +1216,7 @@ function App(){
 
     <div className={`masthead ${focus !== 'city' ? 'hidden' : ''}`}>
       <div className="eyebrow">{tr(language,'IDEAS INTO SYSTEMS')}</div>
-      <h1>{tr(language,'Building practical systems for complex industries.')}</h1>
+      <h1>{tr(language,'Building practical solutions for complex industries.')}</h1>
       <p className="desktop-city-instructions">{tr(language,'Click a structure to explore · Scroll anywhere for the day / night transition')}</p>
     </div>
 

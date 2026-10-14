@@ -15,7 +15,7 @@ const LANGUAGES = [
 const TRANSLATIONS = {
   nl: {
     'IDEAS INTO SYSTEMS':'IDEEËN NAAR SYSTEMEN',
-    'Building practical solutions for complex industries.':'Praktische oplossingen bouwen voor complexe sectoren.',
+    'Building practical systems for complex industries.':'Praktische systemen bouwen voor complexe sectoren.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Klik op een gebouw om te verkennen · Scroll overal voor de dag-/nachtovergang',
     'HEALTHCARE OFFICE':'ZORGKANTOOR','UNDER CONSTRUCTION OFFICE':'KANTOOR IN AANBOUW','DISHIT TOWER':'HET CONTINUÜM','THE CONTINUUM':'HET CONTINUÜM','ENERGY OFFICE':'ENERGIEKANTOOR','MANUFACTURING OFFICE':'PRODUCTIEKANTOOR','CONNECT':'VERBINDEN',
     'Back to city':'Terug naar stad','Back to tower':'Terug naar toren','Choose a floor':'Kies een verdieping','Hover to highlight the matching tower floor. Click to open it.':'Beweeg over een verdieping om deze in de toren te markeren. Klik om te openen.',
@@ -36,7 +36,7 @@ const TRANSLATIONS = {
   },
   es: {
     'IDEAS INTO SYSTEMS':'IDEAS EN SISTEMAS',
-    'Building practical solutions for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
+    'Building practical systems for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Haz clic en una estructura para explorar · Desplázate para cambiar entre día y noche',
     'HEALTHCARE OFFICE':'OFICINA DE SALUD','UNDER CONSTRUCTION OFFICE':'OFICINA EN CONSTRUCCIÓN','DISHIT TOWER':'EL CONTINUUM','THE CONTINUUM':'EL CONTINUUM','ENERGY OFFICE':'OFICINA DE ENERGÍA','MANUFACTURING OFFICE':'OFICINA DE MANUFACTURA','CONNECT':'CONECTAR',
     'Back to city':'Volver a la ciudad','Back to tower':'Volver a la torre','Choose a floor':'Elige un piso','Hover to highlight the matching tower floor. Click to open it.':'Pasa el cursor para resaltar el piso correspondiente. Haz clic para abrirlo.',
@@ -57,7 +57,7 @@ const TRANSLATIONS = {
   },
   fr: {
     'IDEAS INTO SYSTEMS':'DES IDÉES AUX SYSTÈMES',
-    'Building practical solutions for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
+    'Building practical systems for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Cliquez sur une structure pour explorer · Faites défiler pour passer du jour à la nuit',
     'HEALTHCARE OFFICE':'BUREAU SANTÉ','UNDER CONSTRUCTION OFFICE':'BUREAU EN CONSTRUCTION','DISHIT TOWER':'LE CONTINUUM','THE CONTINUUM':'LE CONTINUUM','ENERGY OFFICE':'BUREAU ÉNERGIE','MANUFACTURING OFFICE':'BUREAU INDUSTRIE','CONNECT':'CONNECTER',
     'Back to city':'Retour à la ville','Back to tower':'Retour à la tour','Choose a floor':'Choisissez un étage','Hover to highlight the matching tower floor. Click to open it.':'Survolez pour mettre en évidence l’étage correspondant. Cliquez pour l’ouvrir.',
@@ -119,11 +119,11 @@ const buildingCards = {
     roleLabel: 'Data Scientist',
     timeline: 'May 2021 – Dec 2025',
     skills: ['Data products', 'Forecasting', 'Product ownership', 'Operational analytics'],
-    ratings: [['Data Products', '4.9'], ['Analytics', '4.5'], ['Leadership', '4.2']],
+    ratings: [['Data Products', '4.5'], ['Analytics', '4.8'], ['Leadership', '4.2']],
     applications: ['Snowflake', 'Salesforce', 'Power BI', 'Excel', 'Power Apps', 'Python', 'SQL'],
     highlights: [
       'Reduced manual effort by up to 80% and improved reporting cycle time by 65%.',
-      'Spearheaded UNIT; an enterprise data product that supported 50+ users and presented at NG Expo 2025 as a showcase of operational data products.',
+      'Presented a live enterprise MVP demo to 500+ attendees and supported 50+ users.',
       'Translated stakeholder needs into KPIs, backlog items, release priorities, and UAT.'
     ]
   },
@@ -134,9 +134,9 @@ const buildingCards = {
     metrics: [['Time Saved', '15 hrs/wk'], ['Money Saved', '$40K+/yr'], ['Users Helped', '15+ users']],
     company: 'Vijay Engineering Works',
     roleLabel: 'Supply Chain / Data Analyst',
-    timeline: 'Dec 2015 – Dec 2017',
+    timeline: 'Aug 2016 – Jul 2018',
     skills: ['Manufacturing analytics', 'BOM readiness', 'Inventory visibility', 'Quality tracking'],
-    ratings: [['Operations', '4.0'], ['Planning', '3.9'], ['Quality', '4.5']],
+    ratings: [['Operations', '4.7'], ['Planning', '4.6'], ['Quality', '4.5']],
     applications: ['SAP ERP', 'Excel', 'Power BI', 'MRP / Production planning', 'Supplier tracking', 'Quality reporting'],
     highlights: [
       'Built dashboards across production, backlog, dispatch, vendors, and quality.',
@@ -147,7 +147,7 @@ const buildingCards = {
   telecom: {
     eyebrow: 'CONNECT',
     title: 'Dishit Kalsaria',
-    role: 'Builder · Leader · Systems Thinker',
+    role: 'Builder · Innovator · Systems Thinker',
     links: [
       ['LinkedIn', 'https://www.linkedin.com/in/dishitk'],
       ['GitHub', 'https://github.com/'],
@@ -213,15 +213,15 @@ const floorData = [
     credentials:[["NASA's Human Rover Exploration Challenge 2017",'Representing India as part of Team Technovators'],['Institute of Engineering Technology (IET)',"Joint Secretary of Electronics and Telecomm. Department of IET's NMIMS chapter."]],
     endorsements:[
       '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team.” — Manager, National Grid',
-      '“This appreciate award is a small recognition for your efforts, Dishit. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
+      '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team. This appreciate award is a small recognition for your efforts. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
     ]
   },
   {
     id:'gym', no:'04', name:'The Skill Forge', desc:'Skills grid and capability ratings', icon:'◆', art:'Train capabilities · Build strength',
     skillGroups:[
-      { title:'Programming Skills', items:[['Python',4.8],['SQL',4.9],['R',4.2],['Java',3.8],['TypeScript',4.3]] },
+      { title:'Programming Skills', items:[['Python',4.2],['SQL',4.9],['R',4.2],['Java',4.5],['TypeScript',4.0]] },
       { title:'Hardware Skills', items:[['PCB design',4.1],['Electronics',4.4],['Sensors',4.1],['Embedded systems',3.9]] },
-      { title:'AI / ML Skills', items:[['Generative AI',4.2],['Agentic AI',4.1],['LangGraph',4.0],['LLM Integration',3.9],['Machine Learning',3.8],['Model Evaluation / RAG',3.5]] },
+      { title:'AI / ML Skills', items:[['Generative AI',3.9],['Agentic AI',4.1],['LangGraph',4.0],['LLM Integration',3.9],['Machine Learning',3.8],['Model Evaluation / RAG',3.5]] },
       { title:'Software Development', items:[['React',4.4],['FastAPI',4.5],['Node.js',4.1],['PostgreSQL',4.7]] },
       { title:'Cyber Security', items:[['Access control',4.1],['MFA / SSO',4.2],['Audit trails',4.6],['Secure workflows',4.3]] },
       { title:'Business / Finance', items:[['Forecasting',4.7],['Operations',4.8],['Accounting',3.9],['Product strategy',4.7]] }
@@ -304,6 +304,13 @@ const floorTransforms = {
 
 function WinGrid({x,y,cols,rows,w,h,gx,gy,litChance,p}){ const items=[]; let seed=7+x+y; function rand(){ seed=(seed*9301+49297)%233280; return seed/233280 } for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){ const lit=rand()<litChance; items.push(<rect key={`${r}-${c}`} x={x+c*(w+gx)} y={y+r*(h+gy)} width={w} height={h} rx="2" fill={lit?p.amber:p.win} opacity={lit?.92:.8} />) } return <>{items}</> }
 
+function ChannelIcon({label}){
+  const key=label.toLowerCase()
+  if(key==='linkedin') return <svg className="channel-icon" viewBox="0 0 24 24" role="img" aria-label="LinkedIn"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.53v16.94C2 21.32 2.69 22 3.55 22h16.9c.86 0 1.55-.68 1.55-1.53V3.53c0-.85-.69-1.53-1.55-1.53ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.89a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.29 10.86H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.31h.04c.39-.74 1.36-1.53 2.79-1.53 2.99 0 3.58 1.97 3.58 4.54v5.23Z"/></svg>
+  if(key==='email') return <svg className="channel-icon" viewBox="0 0 24 24" role="img" aria-label="Email"><rect x="2.5" y="5" width="19" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.8"/><path d="m3.5 6.5 8.5 6.7 8.5-6.7" fill="none" stroke="currentColor" strokeWidth="1.8"/></svg>
+  if(key==='github') return <svg className="channel-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.71c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.66c.85 0 1.7.12 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.93.68 1.87v2.78c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+  return <span className="channel-fallback" aria-hidden="true">✎</span>
+}
 function TowerButtons({floors,onSelectFloor,onHoverFloor,onLeaveFloor}){ return <div className="floor-list">{[...floors].reverse().map(f=><button key={f.id} onClick={()=>onSelectFloor(f.id)} onMouseEnter={()=>onHoverFloor(f.id)} onMouseLeave={onLeaveFloor}><span className="floor-no">{f.no}</span><i className="floor-icon" aria-hidden="true">{f.icon}</i><strong>{f.name}</strong></button>)}</div> }
 
 function BuildingPanel({card, kind, lang}){
@@ -312,7 +319,7 @@ function BuildingPanel({card, kind, lang}){
       <img src={profilePhoto} alt="Dishit Kalsaria portrait" className="profile-photo" />
       <div className="profile-copy"><div className="profile-name">{card.title}</div><div className="profile-tag">{card.role}</div><p>Builder focused on turning ambiguity into systems, platforms, and operating leverage across complex industries.</p></div>
     </div>
-    <div className="connect-grid">{card.links.map(([label,href])=><a key={label} className="connect-link" href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}><span>{label}</span><b>↗</b></a>)}</div>
+    <div className="connect-grid">{card.links.map(([label,href])=><a key={label} className="connect-link" href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}><span className="connect-channel-label"><ChannelIcon label={label}/>{label}</span><b>↗</b></a>)}</div>
   </>
 
   if(kind === 'construction') return <div className={`building-theme building-theme-${kind}`}>
@@ -483,6 +490,30 @@ function saveHallFeedback(source, comment, name='Game player', rating=0, publish
   if(rating>=1 && rating<=5){
     submitPortfolioData({type:'feedback',source,rating,comment:clean,publishConsent,name:String(name||'').trim().slice(0,60)})
   }
+}
+
+function GameFeedbackConfirmation({status,onPublish,onDismiss}){
+  if(!status || status==='dismissed') return null
+  return <div className="game-feedback-confirmation" role="status" aria-live="polite">
+    <strong>✓ Feedback submitted</strong>
+    <p>Thanks for sharing your thoughts. Your feedback has been sent for processing.</p>
+    {status==='sent' && <><p>Want to leave your mark on Simpli-City? Your rating and comment may appear on the Wall of Fame after review.</p><div className="game-feedback-actions"><button type="button" onClick={onPublish}>Post on Wall of Fame</button><button type="button" onClick={onDismiss}>Maybe later</button></div></>}
+    {status==='public' && <p>✓ Wall of Fame request submitted. Public display is subject to approval.</p>}
+  </div>
+}
+function submitGameFeedback(source,comment,rating,onStatus,extra){
+  const name=getPlayerName()||'Game player'
+  saveHallFeedback(source,comment,name,rating,false)
+  if(typeof extra==='function') extra()
+  onStatus('sent')
+}
+function publishGameFeedback(source,comment,rating,onStatus){
+  const name=getPlayerName()||'Game player'
+  const entry={source,rating,name,comment}
+  // Local preview is device-specific; backend publication remains approval-based.
+  saveLocalPublicFeedback(entry)
+  submitPortfolioData({type:'feedback',...entry,publishConsent:true})
+  onStatus('public')
 }
 
 function HallOfFameFeedback({lang}){
@@ -722,6 +753,7 @@ function KnowGame({onClose}){
   const [locked,setLocked]=useState(false)
   const [selfGuess,setSelfGuess]=useState(null)
   const [feedback,setFeedback]=useState(0)
+  const [feedbackStatus,setFeedbackStatus]=useState(null)
   const [playerName,setPlayerName]=useState(()=>getPlayerName())
 
   const complete=Object.values(profile).every(Boolean)
@@ -817,7 +849,7 @@ function KnowGame({onClose}){
     else if(choice===r.answer) setScore(v=>v+1)
   }
   const nextRound=()=>{ setPicked(null); setLocked(false); if(round<rounds.length-1) setRound(v=>v+1); else setPhase('result') }
-  const restart=()=>{ setPhase('setup'); setProfile(empty); setRound(0); setScore(0); setPicked(null); setLocked(false); setSelfGuess(null); setFeedback(0) }
+  const restart=()=>{ setPhase('setup'); setProfile(empty); setRound(0); setScore(0); setPicked(null); setLocked(false); setSelfGuess(null); setFeedback(0); setFeedbackStatus(null) }
 
   const VideoTile=({p,i})=><div className={`know-video-tile ${i===0?'you':''}`}>
     <div className="know-video-top"><span className="know-live-dot"/><span>{i===0?'YOU':p.name}</span><small>{p.team}</small></div>
@@ -871,7 +903,7 @@ function KnowGame({onClose}){
           <div className="know-cta"><button className="know-secondary" onClick={restart}>Play again</button><button className="know-secondary" onClick={onClose}>Back to The Arena</button></div>
         </section>
         <aside className="know-result-side">
-          <div className="know-feedback-card"><div className="know-kicker">QUICK FEEDBACK</div><h3>How was KNOW?</h3><GameStarRating value={feedback} onChange={setFeedback}/><button type="button" className="know-team-contact" disabled={!feedback} onClick={()=>saveHallFeedback('KNOW',`KNOW rating: ${feedback}/5`,getPlayerName()||'Game player',feedback,false)}>Submit rating →</button>{feedback>0 && <div className="know-feedback-thanks">Rating ready to submit.</div>}</div>
+          <div className="know-feedback-card"><div className="know-kicker">QUICK FEEDBACK</div><h3>How was KNOW?</h3><GameStarRating value={feedback} onChange={setFeedback}/><button type="button" className="know-team-contact" disabled={!feedback||!!feedbackStatus} onClick={()=>submitGameFeedback('KNOW',`KNOW rating: ${feedback}/5`,feedback,setFeedbackStatus)}>Submit rating →</button><GameFeedbackConfirmation status={feedbackStatus} onPublish={()=>publishGameFeedback('KNOW',`KNOW rating: ${feedback}/5`,feedback,setFeedbackStatus)} onDismiss={()=>setFeedbackStatus('dismissed')}/></div>
           <div className="know-team-cta-card"><div className="know-kicker">YOUR TEAM</div><h3>Want KNOW with real teammates?</h3><p>Replace the four simulated profiles with your team's answers and play the same five-minute format together.</p><a className="know-team-contact" href="mailto:dishitkalsaria@gmail.com?subject=KNOW%20for%20my%20team&body=Hi%20Dishit%2C%0A%0AI%20played%20KNOW%20on%20your%20portfolio%20and%20would%20like%20to%20try%20a%20team%20version.%0A%0ATeam%20size%3A%20%0ACompany%2Fteam%3A%20%0A" onClick={()=>submitPortfolioData({type:'team_request',game:'KNOW',interest:'Team version',teamSize:'',name:'',email:'',note:'Requested from KNOW result screen'})}>Contact for my team →</a></div>
         </aside>
       </div>
@@ -884,7 +916,7 @@ const BELIEVE_ROUNDS = [
   {kind:'fact', tag:'01 · THE WARM-UP', title:'I have been in a Christopher Nolan movie.', truth:false,
     reveal:'No — I have not appeared in a Christopher Nolan movie. Sometimes the obvious answer is the right one.', note:'An easy start. Do not assume the next unusual claim is false, too.'},
   {kind:'fact', tag:'02 · THE PLOT TWIST', title:'I have been part of a project related to NASA.', truth:true,
-    reveal:'Yes. I represented India in NASA’s Human Exploration Rover Challenge in 2017.', note:'A memorable chapter in my engineering journey.'},
+    reveal:'Yes. I represented India in NASA’s Human Exploration Rover Challenge in 2017.', note:'A memorable chapter in my engineering journey.', articleUrl:'https://timesofindia.indiatimes.com/city/vadodara/barodian-led-team-successfully-completes-rover-challenge-at-nasa/articleshow/58212690.cms', articleTitle:'Barodian-led team successfully completes rover challenge at NASA' },
   {kind:'perspective', tag:'03 · YOUR INSTINCT', title:'A complicated operational problem appears with unclear ownership. What do you think I would naturally do first?',
     options:['Start building a technical solution','Understand the process and identify where it is breaking','Bring the stakeholders together immediately','Search for an existing tool that solves it'],
     reveal:'My own approach: understand the operating problem first, then determine whether data, software, automation or a process change is needed.', note:'Your choice shows what stood out to you — there is no wrong answer.'},
@@ -905,6 +937,7 @@ function BelieveGame({onClose}){
   const [chosen,setChosen]=useState(null)
   const [locked,setLocked]=useState(false)
   const [feedback,setFeedback]=useState(0)
+  const [feedbackStatus,setFeedbackStatus]=useState(null)
   const [feedbackNote,setFeedbackNote]=useState('')
   const [playerName,setPlayerName]=useState(()=>getPlayerName())
   const current=BELIEVE_ROUNDS[round]
@@ -948,7 +981,7 @@ function BelieveGame({onClose}){
     if(round===5){setPhase('result');return}
     setRound(v=>v+1);setSeconds(30);setChosen(null);setLocked(false)
   }
-  const restart=()=>{setPhase('welcome');setRound(0);setSeconds(30);setAnswers({});setChosen(null);setLocked(false);setFeedback(0);setFeedbackNote('')}
+  const restart=()=>{setPhase('welcome');setRound(0);setSeconds(30);setAnswers({});setChosen(null);setLocked(false);setFeedback(0);setFeedbackNote('');setFeedbackStatus(null)}
   const answerButtons=current?.kind==='fact'?[{label:'BELIEVE',value:true},{label:'NOT BELIEVE',value:false}]:current?.options.map((label,value)=>({label,value}))
   const feedbackHref='mailto:dishitkalsaria@gmail.com?subject='+encodeURIComponent('BELIEVE demo feedback')+'&body='+encodeURIComponent('I played BELIEVE on your portfolio.\nRating: '+(feedback||'Not selected')+'\nFeedback: '+feedbackNote)
   return <motion.div className="know-shell believe-shell" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} role="dialog" aria-modal="true" aria-label="BELIEVE game">
@@ -965,7 +998,7 @@ function BelieveGame({onClose}){
       <div className="know-progressbar"><i style={{width:`${((round+1)/6)*100}%`}}/></div><div className="know-timebar compact"><i style={{width:`${(seconds/30)*100}%`}}/></div>
       <div className="believe-question"><div className="believe-question-mark">{current.kind==='fact'?'?':'◈'}</div><div className="know-kicker">{current.kind==='fact'?'FACT OR FICTION':'YOUR PERSPECTIVE · NO WRONG ANSWER'}</div><h2>{current.title}</h2></div>
       <div className={`know-answer-grid believe-answers ${current.kind==='fact'?'binary':''}`}>{answerButtons.map(o=><button type="button" key={o.label} disabled={locked} className={`${current.kind==='fact'?(o.value===true?'believe-yes':'believe-no'):''} ${chosen===o.value?'picked':''} ${locked&&current.kind==='fact'&&o.value===current.truth?'correct':''} ${locked&&current.kind==='fact'&&chosen===o.value&&o.value!==current.truth?'wrong':''}`} onClick={()=>choose(o.value)}>{o.label}</button>)}</div>
-      {locked && <div className="know-reveal believe-reveal" aria-live="polite"><div><strong>{chosen===null?"TIME'S UP":current.kind==='perspective'?'YOUR VIEW IS IN':chosen===current.truth?'CORRECT':'PLOT TWIST'}</strong><p>{current.reveal}</p><small>{current.note}</small></div><button className="know-primary" onClick={next}>{round===5?'See results →':'Next question →'}</button></div>}
+      {locked && <div className="know-reveal believe-reveal" aria-live="polite"><div><strong>{chosen===null?"TIME'S UP":current.kind==='perspective'?'YOUR VIEW IS IN':chosen===current.truth?'CORRECT':'PLOT TWIST'}</strong><p>{current.reveal}</p><small>{current.note}</small>{current.articleUrl && <a className="believe-source-link" href={current.articleUrl} target="_blank" rel="noopener noreferrer">Times of India · Read article ↗</a>}</div><button className="know-primary" onClick={next}>{round===5?'See results →':'Next question →'}</button></div>}
     </div>}
     {phase==='result' && <div className="know-stage know-result-stage believe-result"><div className="know-result-layout">
       <section className="know-result-main">
@@ -974,7 +1007,7 @@ function BelieveGame({onClose}){
         <div className="believe-perspective"><div className="know-kicker">WHAT STOOD OUT TO YOU</div><h3>{typeof lastChoice==='number'?perspective:'NO SELECTION'}</h3><p>{typeof lastChoice==='number'?insight:'You skipped the final perspective question. It does not affect your factual score.'}</p></div>
         <div className="know-surprise"><div className="know-kicker">YOUR PLOT TWIST</div><h2>{surprise}</h2><p>Four factual judgments. Two perspectives. One more way to get to know the person behind the city.</p></div>
         <div className="know-cta"><button className="know-secondary" onClick={restart}>Play again</button><button className="know-secondary" onClick={onClose}>Back to The Arena</button></div>
-      </section><aside className="know-result-side"><div className="know-feedback-card"><div className="know-kicker">QUICK FEEDBACK</div><h3>Did you enjoy BELIEVE?</h3><p>Help shape the next version.</p><GameStarRating value={feedback} onChange={setFeedback}/><label className="believe-feedback-label">What would make it better?<textarea value={feedbackNote} onChange={e=>setFeedbackNote(e.target.value)} maxLength={400} placeholder="Optional feedback..." /></label><button type="button" className="know-team-contact" disabled={!feedback} onClick={()=>{saveHallFeedback('BELIEVE',`BELIEVE rating: ${feedback}/5${feedbackNote?` — ${feedbackNote}`:''}`,getPlayerName()||'Game player',feedback,false)}}>Submit feedback →</button><a className="feedback-email-link" href={feedbackHref}>Send email ↗</a><p className="believe-feedback-disclosure">Thanks for the feedback. Email is optional if you want to add context.</p></div>
+      </section><aside className="know-result-side"><div className="know-feedback-card"><div className="know-kicker">QUICK FEEDBACK</div><h3>Did you enjoy BELIEVE?</h3><p>Help shape the next version.</p><GameStarRating value={feedback} onChange={setFeedback}/><label className="believe-feedback-label">What would make it better?<textarea value={feedbackNote} onChange={e=>setFeedbackNote(e.target.value)} maxLength={400} placeholder="Optional feedback..." /></label><button type="button" className="know-team-contact" disabled={!feedback||!!feedbackStatus} onClick={()=>submitGameFeedback('BELIEVE',`BELIEVE rating: ${feedback}/5${feedbackNote?` — ${feedbackNote}`:''}`,feedback,setFeedbackStatus)}>Submit feedback →</button><GameFeedbackConfirmation status={feedbackStatus} onPublish={()=>publishGameFeedback('BELIEVE',`BELIEVE rating: ${feedback}/5${feedbackNote?` — ${feedbackNote}`:''}`,feedback,setFeedbackStatus)} onDismiss={()=>setFeedbackStatus('dismissed')}/><a className="feedback-email-link" href={feedbackHref}>Send email ↗</a><p className="believe-feedback-disclosure">Thanks for the feedback. Email is optional if you want to add context.</p></div>
       <div className="know-team-cta-card"><div className="know-kicker">YOUR TEAM</div><h3>Want BELIEVE with real teammates?</h3><p>Bring your own stories and see which claims your team can spot.</p><a className="know-team-contact" href="mailto:dishitkalsaria@gmail.com?subject=BELIEVE%20for%20my%20team&body=Hi%20Dishit%2C%0A%0AI%20played%20BELIEVE%20on%20your%20portfolio%20and%20would%20like%20to%20try%20a%20team%20version.%0A%0ATeam%20size%3A%20%0ACompany%2Fteam%3A%20%0A" onClick={()=>submitPortfolioData({type:'team_request',game:'BELIEVE',interest:'Team version',teamSize:'',name:'',email:'',note:'Requested from BELIEVE result screen'})}>Contact for my team →</a></div></aside>
     </div></div>}
   </motion.div>
@@ -1032,6 +1065,7 @@ function ConnectGame({onClose}){
   const [connectionLocked,setConnectionLocked]=useState(false)
   const [bonusSeconds,setBonusSeconds]=useState(20)
   const [feedback,setFeedback]=useState(0)
+  const [feedbackStatus,setFeedbackStatus]=useState(null)
   const [interest,setInterest]=useState('')
   const [playerName,setPlayerName]=useState(()=>getPlayerName())
   const [note,setNote]=useState('')
@@ -1076,7 +1110,7 @@ function ConnectGame({onClose}){
     if(round>=4){setPhase('bonus');setBonusSeconds(20);return}
     setRound(v=>v+1);setSeconds(CONNECT_SECONDS);setEntry('');setOutcome('');setRevealed(false)
   }
-  const restart=()=>{setPhase('welcome');setVariation(v=>v+1);setRound(0);setSeconds(CONNECT_SECONDS);setEntry('');setOutcome('');setRevealed(false);setRecords([]);setConnection(null);setConnectionLocked(false);setBonusSeconds(20);setFeedback(0);setInterest('');setNote('')}
+  const restart=()=>{setPhase('welcome');setVariation(v=>v+1);setRound(0);setSeconds(CONNECT_SECONDS);setEntry('');setOutcome('');setRevealed(false);setRecords([]);setConnection(null);setConnectionLocked(false);setBonusSeconds(20);setFeedback(0);setInterest('');setNote('');setFeedbackStatus(null)}
   const feedbackHref='mailto:dishitkalsaria@gmail.com?subject='+encodeURIComponent('CONNECT game feedback / team request')+'&body='+encodeURIComponent('I played CONNECT on your portfolio.\nIndustry: '+bank.label+'\nRating: '+(feedback||'Not selected')+'\nInterested in: '+(interest||'Not selected')+'\nNotes: '+note)
   return <motion.div className="know-shell connect-shell" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} role="dialog" aria-modal="true" aria-label="CONNECT word game">
     <div className="know-topbar"><div><span className="know-mark">CONNECT</span><span className="know-submark">Five words. One connection. · Portfolio edition</span></div><button className="know-close" onClick={onClose} aria-label="Close CONNECT">×</button></div>
@@ -1099,7 +1133,7 @@ function ConnectGame({onClose}){
       {revealed&&<div className="connect-reveal"><div><span>{outcome==='correct'?'CORRECT':'WORD REVEALED'}</span><h3>{wordInfo[0]}</h3><p>{outcome==='correct'?`+${75+Math.round(25*seconds/CONNECT_SECONDS)} points · ${CONNECT_SECONDS-seconds}s to solve`:'You can try a new set when you replay.'}</p></div><button className="know-primary" onClick={next}>{round===4?'Final connection →':'Next word →'}</button></div>}
     </div>}
     {phase==='bonus'&&<div className="know-stage connect-bonus"><div className="know-progress"><span>FINAL CONNECTION · BONUS</span><div className="know-round-meta"><b className={bonusSeconds<=10?'urgent':''}>00:{String(bonusSeconds).padStart(2,'0')}</b></div></div><div className="know-timebar compact"><i style={{width:`${bonusSeconds/20*100}%`}}/></div><div className="know-kicker">ONE LAST CHALLENGE</div><h2>What connects your five words?</h2><div className="connect-summary-words">{set.words.map(([word])=><span key={word}>{word}</span>)}</div><div className="connect-bonus-grid">{bonusOptions.map(option=><button type="button" key={option} disabled={connectionLocked} className={`${connection===option?'picked':''} ${connectionLocked&&option===set.link?'correct':''}`} onClick={()=>{setConnection(option);setConnectionLocked(true)}}>{option}</button>)}</div>{connectionLocked&&<div className="connect-reveal"><div><span>{connection===set.link?'CORRECT CONNECTION':connection===null?"TIME'S UP":'THE CONNECTION'}</span><h3>{set.link}</h3><p>These terms all belong to {set.link.toLowerCase()}.</p></div><button className="know-primary" onClick={()=>setPhase('result')}>See your results →</button></div>}</div>}
-    {phase==='result'&&<div className="know-stage know-result-stage connect-result"><div className="know-result-layout"><section className="know-result-main connect-result-main"><div className="know-kicker">CONNECT · YOUR RESULTS</div><div className="connect-score-hero"><div><div className="know-score">{score}<span className="connect-score-out-of">/600</span></div><div className="know-score-label">TOTAL POINTS</div></div><div className="connect-result-title"><span>{bank.label}</span><h2>{completed===5?'THE QUICK CONNECTOR':completed>=3?'THE WORD EXPLORER':'THE CURIOUS STARTER'}</h2><p>{completed===5?'You completed all five industry terms.':completed>=3?'You found most of the missing links.':'You made a start — replay to master this industry.'}</p></div></div><div className="connect-result-stats"><div><small>WORDS</small><b>{completed}/5</b><span>Solved</span></div><div><small>CONNECTION</small><b>{connection===set.link?'YES':'NO'}</b><span>Bonus</span></div><div><small>TIME</small><b>{records.filter(r=>r.correct).reduce((n,r)=>n+CONNECT_SECONDS-r.time,0)}s</b><span>Solving</span></div></div><div className="connect-review-card"><div className="section-title">YOUR WORD SET</div><div className="connect-answer-review">{set.words.map(([word],i)=><span className={records[i]?.correct?'solved':''} key={word}>{records[i]?.correct?'✓':'○'} {word}</span>)}</div><div className={`connect-bonus-result ${connection===set.link?'solved':''}`}><small>FINAL CONNECTION</small><strong>{set.link}</strong><span>{connection===set.link?'Correct connection':'Revealed after the round'}</span></div></div><div className="know-cta"><button className="know-secondary" onClick={restart}>Play another set</button><button className="know-secondary" onClick={onClose}>Back to The Arena</button></div></section><aside className="know-result-feedback connect-feedback-panel"><div className="know-kicker">YOUR FEEDBACK</div><h3>Enjoyed CONNECT?</h3><p>Would you like AI-generated words tailored to your actual job, or multiplayer for your team?</p><GameStarRating value={feedback} onChange={setFeedback} label="Your rating"/><label htmlFor="connect-interest">What would you like next?</label><select id="connect-interest" value={interest} onChange={e=>setInterest(e.target.value)}><option value="">Select an option</option><option>AI words for my profession</option><option>Multiplayer for my team</option><option>Both AI and multiplayer</option><option>Just enjoying the demo</option></select><label htmlFor="connect-note">Your industry or idea (optional)</label><textarea id="connect-note" rows="2" maxLength="300" value={note} onChange={e=>setNote(e.target.value)} placeholder="e.g. Medical billing for my 8-person team"/><button type="button" className="know-primary connect-contact" disabled={!feedback} onClick={()=>{saveHallFeedback('CONNECT',`CONNECT rating: ${feedback}/5 · ${interest||'No follow-up selected'}${note?` — ${note}`:''}`,getPlayerName()||'Game player',feedback,false); if(interest && interest!=='Just enjoying the demo') submitPortfolioData({type:'team_request',game:'CONNECT',interest,teamSize:'',name:getPlayerName(),email:'',note})}}>Submit feedback →</button><a className="feedback-email-link connect-email-link" href={feedbackHref}>Send email ↗</a><p className="connect-small-note">Thanks for the feedback. Email is optional if you want to continue the conversation.</p></aside></div></div>}
+    {phase==='result'&&<div className="know-stage know-result-stage connect-result"><div className="know-result-layout"><section className="know-result-main connect-result-main"><div className="know-kicker">CONNECT · YOUR RESULTS</div><div className="connect-score-hero"><div><div className="know-score">{score}<span className="connect-score-out-of">/600</span></div><div className="know-score-label">TOTAL POINTS</div></div><div className="connect-result-title"><span>{bank.label}</span><h2>{completed===5?'THE QUICK CONNECTOR':completed>=3?'THE WORD EXPLORER':'THE CURIOUS STARTER'}</h2><p>{completed===5?'You completed all five industry terms.':completed>=3?'You found most of the missing links.':'You made a start — replay to master this industry.'}</p></div></div><div className="connect-result-stats"><div><small>WORDS</small><b>{completed}/5</b><span>Solved</span></div><div><small>CONNECTION</small><b>{connection===set.link?'YES':'NO'}</b><span>Bonus</span></div><div><small>TIME</small><b>{records.filter(r=>r.correct).reduce((n,r)=>n+CONNECT_SECONDS-r.time,0)}s</b><span>Solving</span></div></div><div className="connect-review-card"><div className="section-title">YOUR WORD SET</div><div className="connect-answer-review">{set.words.map(([word],i)=><span className={records[i]?.correct?'solved':''} key={word}>{records[i]?.correct?'✓':'○'} {word}</span>)}</div><div className={`connect-bonus-result ${connection===set.link?'solved':''}`}><small>FINAL CONNECTION</small><strong>{set.link}</strong><span>{connection===set.link?'Correct connection':'Revealed after the round'}</span></div></div><div className="know-cta"><button className="know-secondary" onClick={restart}>Play another set</button><button className="know-secondary" onClick={onClose}>Back to The Arena</button></div></section><aside className="know-result-feedback connect-feedback-panel"><div className="know-kicker">YOUR FEEDBACK</div><h3>Enjoyed CONNECT?</h3><p>Would you like AI-generated words tailored to your actual job, or multiplayer for your team?</p><GameStarRating value={feedback} onChange={setFeedback} label="Your rating"/><label htmlFor="connect-interest">What would you like next?</label><select id="connect-interest" value={interest} onChange={e=>setInterest(e.target.value)}><option value="">Select an option</option><option>AI words for my profession</option><option>Multiplayer for my team</option><option>Both AI and multiplayer</option><option>Just enjoying the demo</option></select><label htmlFor="connect-note">Your industry or idea (optional)</label><textarea id="connect-note" rows="2" maxLength="300" value={note} onChange={e=>setNote(e.target.value)} placeholder="e.g. Medical billing for my 8-person team"/><button type="button" className="know-primary connect-contact" disabled={!feedback||!!feedbackStatus} onClick={()=>{submitGameFeedback('CONNECT',`CONNECT rating: ${feedback}/5 · ${interest||'No follow-up selected'}${note?` — ${note}`:''}`,feedback,setFeedbackStatus,()=>{if(interest && interest!=='Just enjoying the demo') submitPortfolioData({type:'team_request',game:'CONNECT',interest,teamSize:'',name:getPlayerName(),email:'',note})})}}>Submit feedback →</button><GameFeedbackConfirmation status={feedbackStatus} onPublish={()=>publishGameFeedback('CONNECT',`CONNECT rating: ${feedback}/5 · ${interest||'No follow-up selected'}${note?` — ${note}`:''}`,feedback,setFeedbackStatus)} onDismiss={()=>setFeedbackStatus('dismissed')}/><a className="feedback-email-link connect-email-link" href={feedbackHref}>Send email ↗</a><p className="connect-small-note">Thanks for the feedback. Email is optional if you want to continue the conversation.</p></aside></div></div>}
   </motion.div>
 }
 
@@ -1216,7 +1250,7 @@ function App(){
 
     <div className={`masthead ${focus !== 'city' ? 'hidden' : ''}`}>
       <div className="eyebrow">{tr(language,'IDEAS INTO SYSTEMS')}</div>
-      <h1>{tr(language,'Building practical solutions for complex industries.')}</h1>
+      <h1>{tr(language,'Building practical systems for complex industries.')}</h1>
       <p className="desktop-city-instructions">{tr(language,'Click a structure to explore · Scroll anywhere for the day / night transition')}</p>
     </div>
 

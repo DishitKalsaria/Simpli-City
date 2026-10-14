@@ -971,3 +971,19 @@ button,a{font:inherit} button{cursor:pointer;border:0} a{text-decoration:none}
   .masthead{width:calc(100% - 36px);max-width:calc(100% - 36px)}
   .masthead h1{overflow-wrap:normal;hyphens:none}
 }
+
+/* v1.1.1: compact interaction affordances and feedback confirmation */
+.connect-channel-label{display:inline-flex;align-items:center;gap:10px;min-width:0}
+.channel-icon{display:block;width:19px;height:19px;flex-shrink:0}
+.channel-fallback{font-size:17px}
+.floor-list button{border-color:rgba(47,111,224,.3);background:linear-gradient(145deg,rgba(229,240,255,.98),rgba(246,250,255,.98));box-shadow:0 8px 22px rgba(47,111,224,.10)}
+.floor-list .floor-icon{background:linear-gradient(135deg,#d4e7ff,#b5d2ff);color:#16417a}
+.night .floor-list button{border-color:rgba(123,168,255,.42);background:linear-gradient(145deg,rgba(29,54,105,.94),rgba(18,34,67,.94))}
+.night .floor-list .floor-icon{background:linear-gradient(135deg,rgba(69,128,226,.55),rgba(47,111,224,.28))}
+.game-feedback-confirmation{margin-top:12px;padding:13px;border:1px solid rgba(47,111,224,.28);background:rgba(47,111,224,.08);border-radius:12px;font-size:13px;line-height:1.45}
+.game-feedback-confirmation strong{display:block;font-size:14px;color:inherit}
+.game-feedback-confirmation p{margin:6px 0}
+.game-feedback-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.game-feedback-actions button{border-radius:9px;border:1px solid rgba(47,111,224,.36);background:rgba(47,111,224,.14);color:inherit;padding:8px 10px;cursor:pointer;font:inherit;font-weight:700}
+.game-feedback-actions button:hover{background:rgba(47,111,224,.25)}
+.believe-source-link{display:inline-block;margin-top:10px;color:#70a7ff;font-weight:700;text-decoration:underline;text-underline-offset:3px}

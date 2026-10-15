@@ -987,3 +987,133 @@ button,a{font:inherit} button{cursor:pointer;border:0} a{text-decoration:none}
 .game-feedback-actions button{border-radius:9px;border:1px solid rgba(47,111,224,.36);background:rgba(47,111,224,.14);color:inherit;padding:8px 10px;cursor:pointer;font:inherit;font-weight:700}
 .game-feedback-actions button:hover{background:rgba(47,111,224,.25)}
 .believe-source-link{display:inline-block;margin-top:10px;color:#70a7ff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+/* Simpli-City v1.1.5 — append to your existing src/styles.css */
+.arena-scroll-panel {overflow-y:auto !important;overscroll-behavior:contain;scrollbar-width:thin;}
+.arena-scroll-panel .bottom-actions {position:sticky;bottom:0;z-index:8;padding:12px 0 5px;background:var(--arena-actions-bg,rgba(250,252,255,.98));}
+.night .arena-scroll-panel .bottom-actions {--arena-actions-bg:rgba(10,22,48,.98);}
+.arena-leaderboard-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;}
+.arena-game-board {min-width:0;padding:12px 9px;border-radius:14px;border:1px solid rgba(92,121,162,.22);background:rgba(120,160,220,.06);}
+.arena-game-board-title {display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:6px;font-size:12px;}
+.arena-game-board-title small {opacity:.7;}
+.arena-game-board .leaderboard-rows {min-width:0;}
+.arena-game-board .leaderboard-row {display:grid;grid-template-columns:22px minmax(0,1fr);gap:4px 7px;align-items:center;padding:7px 2px;min-width:0;}
+.arena-game-board .leaderboard-row strong {overflow-wrap:anywhere;font-size:12px;}
+.arena-game-board .leaderboard-row em {grid-column:2;font-size:11px;}
+.feedback-thank-you {padding:12px 0;line-height:1.5;}
+.feedback-thank-you > strong {font-size:16px;}
+.feedback-summary {margin-top:14px;display:grid;gap:10px;}
+.feedback-summary > div {display:grid;gap:3px;min-width:0;}
+.feedback-summary span {font-size:11px;opacity:.72;text-transform:uppercase;letter-spacing:.06em;}
+.feedback-summary b,.feedback-summary p {font-size:13px;font-weight:500;overflow-wrap:anywhere;margin:0;white-space:pre-wrap;}
+@media(max-width:1200px){.arena-leaderboard-grid{grid-template-columns:minmax(0,1fr);}}
+/* v1.1.5.1 — compact Arena; only leaderboard entries scroll.
+   Overrides the panel-wide overflow from the v1.1.5 rules above. */
+.left-panel.arena-scroll-panel {
+  display:flex;
+  flex-direction:column;
+  overflow:hidden !important;
+  min-height:0;
+}
+.left-panel.arena-scroll-panel > .compact-hero { flex:0 0 auto; margin-bottom:5px; }
+.left-panel.arena-scroll-panel > .game-lounge-card {
+  display:flex; flex-direction:column; flex:1 1 0; min-height:0;
+  overflow:hidden; padding:10px 12px; margin-top:5px;
+}
+.arena-scroll-panel .game-intro { margin-bottom:5px !important; }
+.arena-scroll-panel .game-intro strong { font-size:13px; }
+.arena-scroll-panel .game-intro span { font-size:10px; line-height:1.3; }
+.arena-scroll-panel .game-tile-grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px; margin-bottom:4px;flex:0 0 auto;
+}
+.arena-scroll-panel .game-tile {
+  min-width:0;min-height:76px;padding:8px 7px;gap:2px;
+}
+.arena-scroll-panel .game-tile strong {font-size:clamp(11px,1vw,14px);line-height:1.2;}
+.arena-scroll-panel .game-tile em {font-size:10px;}
+.arena-scroll-panel .game-tile span {font-size:10px;line-height:1.2;}
+.arena-scroll-panel .game-player-result {font-size:9px;margin-top:2px;}
+.arena-scroll-panel .arena-leaderboard {
+  display:flex;flex-direction:column; flex:1 1 0;
+  min-height:0; margin-top:5px;padding-top:7px;
+}
+.arena-scroll-panel .arena-leaderboard-head {flex:0 0 auto;margin-bottom:5px;}
+.arena-scroll-panel .arena-leaderboard-grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;flex:1 1 0;min-height:0;margin-top:3px;
+}
+.arena-scroll-panel .arena-game-board {
+  display:flex;flex-direction:column;min-height:0;
+  padding:8px 6px;overflow:hidden;
+}
+.arena-scroll-panel .arena-game-board-title {flex:0 0 auto;margin-bottom:3px;}
+.arena-scroll-panel .arena-game-board .leaderboard-rows {
+  flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;scrollbar-width:thin;
+}
+.arena-scroll-panel .arena-game-board .leaderboard-row {padding:4px 1px;}
+.arena-scroll-panel .bottom-actions {
+  position:static !important;flex:0 0 auto;
+  margin-top:5px !important;padding:6px 0 0;
+  background:transparent !important;
+}
+@media (max-width:900px) {
+  /* Mobile uses compact tiles and horizontally arranged game boards.
+     Only the boards region scrolls sideways, and rows scroll vertically. */
+  .left-panel.arena-scroll-panel {overflow:hidden !important;}
+  .left-panel.arena-scroll-panel > .game-lounge-card {padding:9px;}
+  .arena-scroll-panel .game-tile-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+  .arena-scroll-panel .game-tile {min-height:76px !important;padding:7px 5px !important;}
+  .arena-scroll-panel .game-tile strong {font-size:11px !important;}
+  .arena-scroll-panel .game-tile span {font-size:9px !important;}
+  .arena-scroll-panel .arena-leaderboard-grid {
+    grid-template-columns:repeat(3,minmax(174px,1fr));
+    overflow-x:auto;overscroll-behavior-x:contain;
+  }
+  .arena-scroll-panel .bottom-actions {display:none !important;}
+}
+@media (max-height:640px) and (min-width:901px) {
+  .arena-scroll-panel .game-intro span {display:none;}
+  .arena-scroll-panel .game-tile {min-height:62px;padding:5px;}
+  .arena-scroll-panel .arena-game-board .leaderboard-row {padding:2px 1px;}
+}
+/* v1.1.5.2 — only leaderboard presentation; append after v1.1.5.1 CSS. */
+.arena-scroll-panel .arena-leaderboard-grid {align-items:start;}
+.arena-scroll-panel .arena-game-board {
+  align-self:start;height:auto;max-height:100%;min-height:0;
+  border-color:rgba(92,135,195,.32);
+  background:linear-gradient(160deg,rgba(100,154,238,.12),rgba(100,154,238,.025));
+}
+.arena-scroll-panel .arena-game-board .leaderboard-rows {
+  flex:0 1 auto; min-height:0; max-height:100%;overflow-y:auto;
+}
+.arena-scroll-panel .arena-game-board .leaderboard-row.scoreboard-entry {
+  display:grid;grid-template-columns:24px minmax(0,1fr) auto;
+  align-items:center;gap:7px;padding:7px 4px;margin:3px 0;
+  border-radius:9px;background:rgba(107,152,216,.075);
+}
+.arena-scroll-panel .arena-game-board .leaderboard-row.scoreboard-first {
+  background:rgba(215,165,52,.12);border:1px solid rgba(215,165,52,.23);
+}
+.arena-scroll-panel .scoreboard-rank {
+  display:grid;place-items:center;font-size:10px;font-weight:800;
+  border-radius:7px;min-height:23px;background:rgba(100,145,205,.15);
+}
+.arena-scroll-panel .scoreboard-first .scoreboard-rank {color:#a7731d;background:rgba(215,165,52,.2);}
+.arena-scroll-panel .scoreboard-detail {min-width:0;display:flex;flex-direction:column;gap:5px;}
+.arena-scroll-panel .scoreboard-detail strong {
+  font-size:11px;line-height:1.15;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.arena-scroll-panel .scoreboard-meter {height:4px;background:rgba(110,145,185,.17);border-radius:6px;overflow:hidden;}
+.arena-scroll-panel .scoreboard-meter span {
+  display:block;height:100%;border-radius:6px;
+  background:linear-gradient(90deg,#4483d8,#79b6fa);
+}
+.arena-scroll-panel .arena-game-board .leaderboard-row .scoreboard-score {
+  grid-column:auto;white-space:nowrap;font-size:10px;font-weight:750;font-style:normal;
+  font-variant-numeric:tabular-nums;opacity:.86;
+}
+.night .arena-scroll-panel .scoreboard-first .scoreboard-rank {color:#f1cb6e;}
+@media (max-width:900px) {
+  .arena-scroll-panel .arena-game-board .leaderboard-row.scoreboard-entry {padding:6px 4px;}
+}

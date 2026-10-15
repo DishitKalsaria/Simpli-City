@@ -15,7 +15,7 @@ const LANGUAGES = [
 const TRANSLATIONS = {
   nl: {
     'IDEAS INTO SYSTEMS':'IDEEËN NAAR SYSTEMEN',
-    'Building practical systems for complex industries.':'Praktische systemen bouwen voor complexe sectoren.',
+    'Building practical solutions for complex industries.':'Praktische systemen bouwen voor complexe sectoren.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Klik op een gebouw om te verkennen · Scroll overal voor de dag-/nachtovergang',
     'HEALTHCARE OFFICE':'ZORGKANTOOR','UNDER CONSTRUCTION OFFICE':'KANTOOR IN AANBOUW','DISHIT TOWER':'HET CONTINUÜM','THE CONTINUUM':'HET CONTINUÜM','ENERGY OFFICE':'ENERGIEKANTOOR','MANUFACTURING OFFICE':'PRODUCTIEKANTOOR','CONNECT':'VERBINDEN',
     'Back to city':'Terug naar stad','Back to tower':'Terug naar toren','Choose a floor':'Kies een verdieping','Hover to highlight the matching tower floor. Click to open it.':'Beweeg over een verdieping om deze in de toren te markeren. Klik om te openen.',
@@ -36,7 +36,7 @@ const TRANSLATIONS = {
   },
   es: {
     'IDEAS INTO SYSTEMS':'IDEAS EN SISTEMAS',
-    'Building practical systems for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
+    'Building practical solutions for complex industries.':'Construyendo sistemas prácticos para industrias complejas.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Haz clic en una estructura para explorar · Desplázate para cambiar entre día y noche',
     'HEALTHCARE OFFICE':'OFICINA DE SALUD','UNDER CONSTRUCTION OFFICE':'OFICINA EN CONSTRUCCIÓN','DISHIT TOWER':'EL CONTINUUM','THE CONTINUUM':'EL CONTINUUM','ENERGY OFFICE':'OFICINA DE ENERGÍA','MANUFACTURING OFFICE':'OFICINA DE MANUFACTURA','CONNECT':'CONECTAR',
     'Back to city':'Volver a la ciudad','Back to tower':'Volver a la torre','Choose a floor':'Elige un piso','Hover to highlight the matching tower floor. Click to open it.':'Pasa el cursor para resaltar el piso correspondiente. Haz clic para abrirlo.',
@@ -57,7 +57,7 @@ const TRANSLATIONS = {
   },
   fr: {
     'IDEAS INTO SYSTEMS':'DES IDÉES AUX SYSTÈMES',
-    'Building practical systems for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
+    'Building practical solutions for complex industries.':'Construire des systèmes pratiques pour des secteurs complexes.',
     'Click a structure to explore · Scroll anywhere for the day / night transition':'Cliquez sur une structure pour explorer · Faites défiler pour passer du jour à la nuit',
     'HEALTHCARE OFFICE':'BUREAU SANTÉ','UNDER CONSTRUCTION OFFICE':'BUREAU EN CONSTRUCTION','DISHIT TOWER':'LE CONTINUUM','THE CONTINUUM':'LE CONTINUUM','ENERGY OFFICE':'BUREAU ÉNERGIE','MANUFACTURING OFFICE':'BUREAU INDUSTRIE','CONNECT':'CONNECTER',
     'Back to city':'Retour à la ville','Back to tower':'Retour à la tour','Choose a floor':'Choisissez un étage','Hover to highlight the matching tower floor. Click to open it.':'Survolez pour mettre en évidence l’étage correspondant. Cliquez pour l’ouvrir.',
@@ -213,7 +213,7 @@ const floorData = [
     credentials:[["NASA's Human Rover Exploration Challenge 2017",'Representing India as part of Team Technovators'],['Institute of Engineering Technology (IET)',"Joint Secretary of Electronics and Telecomm. Department of IET's NMIMS chapter."]],
     endorsements:[
       '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team.” — Manager, National Grid',
-      '“Thank you Dishit for your continued focus on finding a better way to resolve issues for the team. This appreciate award is a small recognition for your efforts. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
+      '“This appreciate award is a small recognition for your efforts, Dishit. You are effectively collaborating across 4 departments to achieve better outcomes for our commercial customers. You are centralizing data and being innovative in consolidating information for the account audit. The speed you are using to address these business challenges is greatly appreciated. We are so glad to have you here at National Grid” — Vice President, Account Management, National Grid'
     ]
   },
   {
@@ -402,30 +402,33 @@ function trackEvent(event, game='', meta=''){
   submitPortfolioData({type:'event',event,game,meta})
 }
 const PLAYER_NAME_KEY = 'dishit-portfolio-player-name'
+function cleanPlayerName(value, limit=40){
+  return String(value||'').replace(/[^A-Za-z ]/g,'').replace(/ {2,}/g,' ').slice(0,limit)
+}
 function getPlayerName(){
-  try { return (localStorage.getItem(PLAYER_NAME_KEY)||'').trim().slice(0,40) } catch { return '' }
+  try { return cleanPlayerName(localStorage.getItem(PLAYER_NAME_KEY)).trim() } catch { return '' }
 }
 function storePlayerName(value){
-  const clean=String(value||'').trim().slice(0,40)
+  const clean=cleanPlayerName(value).trim()
   try { if(clean) localStorage.setItem(PLAYER_NAME_KEY,clean); else localStorage.removeItem(PLAYER_NAME_KEY) } catch {}
   return clean
 }
 function GameStarRating({value,onChange,label='Your rating'}){
   return <div className="game-star-rating"><span>{label}</span><div className="star-picker compact-stars" role="group" aria-label={label}>{[1,2,3,4,5].map(n=><button type="button" key={n} className={n<=value?'active':''} onClick={()=>onChange(n)} aria-label={`${n} stars`}>★</button>)}</div></div>
 }
-const PUBLIC_STATS_CACHE_KEY = 'dishit-portfolio-public-stats-v4'
+const PUBLIC_STATS_CACHE_KEY = 'dishit-portfolio-public-stats-v5'
 function readCachedPublicStats(){
   try { return JSON.parse(localStorage.getItem(PUBLIC_STATS_CACHE_KEY) || 'null') } catch { return null }
 }
 function loadPublicStats(onData){
   const cached=readCachedPublicStats()
-  if(cached) onData(cached)
+  if(cached) onData({...cached,approvedFeedback:[]}) // Never publish cached feedback after approval changes
   const cb=`__continuumStats_${Date.now()}_${Math.random().toString(36).slice(2)}`.replace(/[^A-Za-z0-9_$]/g,'')
   const script=document.createElement('script')
   window[cb]=(data)=>{
     try{
       if(data && data.ok!==false){
-        try{localStorage.setItem(PUBLIC_STATS_CACHE_KEY,JSON.stringify(data))}catch{}
+        try{localStorage.setItem(PUBLIC_STATS_CACHE_KEY,JSON.stringify({...data,approvedFeedback:[]}))}catch{}
         onData(data)
       }
     }finally{delete window[cb];script.remove()}
@@ -438,14 +441,6 @@ function loadPublicStats(onData){
 
 const GAME_RESULTS_KEY = 'dishit-portfolio-game-results'
 const HALL_FEEDBACK_KEY = 'dishit-portfolio-feedback'
-const LOCAL_PUBLIC_FEEDBACK_KEY = 'dishit-portfolio-public-feedback-local'
-
-function readLocalPublicFeedback(){
-  try { const rows=JSON.parse(localStorage.getItem(LOCAL_PUBLIC_FEEDBACK_KEY)||'[]'); return Array.isArray(rows)?rows:[] } catch { return [] }
-}
-function saveLocalPublicFeedback(entry){
-  try { const rows=readLocalPublicFeedback(); const next=[{...entry,timestamp:new Date().toISOString(),local:true},...rows].slice(0,10); localStorage.setItem(LOCAL_PUBLIC_FEEDBACK_KEY,JSON.stringify(next)); return next } catch { return [] }
-}
 function buildLocalLeaderboard(){
   const results=loadGameResults()
   const name=getPlayerName()
@@ -495,10 +490,10 @@ function saveHallFeedback(source, comment, name='Game player', rating=0, publish
 function GameFeedbackConfirmation({status,onPublish,onDismiss}){
   if(!status || status==='dismissed') return null
   return <div className="game-feedback-confirmation" role="status" aria-live="polite">
-    <strong>✓ Feedback submitted</strong>
-    <p>Thanks for sharing your thoughts. Your feedback has been sent for processing.</p>
+    <strong>✓ Feedback submission initiated</strong>
+    <p>Thanks for sharing your thoughts. The request was sent; delivery is not independently confirmed.</p>
     {status==='sent' && <><p>Want to leave your mark on Simpli-City? Your rating and comment may appear on the Wall of Fame after review.</p><div className="game-feedback-actions"><button type="button" onClick={onPublish}>Post on Wall of Fame</button><button type="button" onClick={onDismiss}>Maybe later</button></div></>}
-    {status==='public' && <p>✓ Wall of Fame request submitted. Public display is subject to approval.</p>}
+    {status==='public' && <p>✓ Wall of Fame request sent. Public display requires approval.</p>}
   </div>
 }
 function submitGameFeedback(source,comment,rating,onStatus,extra){
@@ -510,8 +505,7 @@ function submitGameFeedback(source,comment,rating,onStatus,extra){
 function publishGameFeedback(source,comment,rating,onStatus){
   const name=getPlayerName()||'Game player'
   const entry={source,rating,name,comment}
-  // Local preview is device-specific; backend publication remains approval-based.
-  saveLocalPublicFeedback(entry)
+  // Backend upgrades the recent private feedback row to publication consent without adding a duplicate.
   submitPortfolioData({type:'feedback',...entry,publishConsent:true})
   onStatus('public')
 }
@@ -524,8 +518,7 @@ function HallOfFameFeedback({lang}){
   const [rating,setRating]=useState(5)
   const [publishConsent,setPublishConsent]=useState(false)
   const [submitted,setSubmitted]=useState(false)
-  const [stats,setStats]=useState(()=>readCachedPublicStats())
-  const [localPublicFeedback,setLocalPublicFeedback]=useState(()=>readLocalPublicFeedback())
+  const [stats,setStats]=useState(()=>readCachedPublicStats() && {...readCachedPublicStats(),approvedFeedback:[]})
 
   useEffect(()=>{ loadPublicStats(setStats) },[])
 
@@ -533,9 +526,8 @@ function HallOfFameFeedback({lang}){
     e.preventDefault()
     const trimmedComment=comment.trim()
     if(!trimmedComment) return
-    const publicEntry={source:'Website',rating,name:name.trim()||'Visitor',title:title.trim(),company:company.trim(),comment:trimmedComment}
+    const publicEntry={source:'Website',rating,name:cleanPlayerName(name,60).trim()||'Visitor',title:title.trim(),company:company.trim(),comment:trimmedComment}
     submitPortfolioData({type:'feedback',...publicEntry,publishConsent})
-    if(publishConsent) setLocalPublicFeedback(saveLocalPublicFeedback(publicEntry))
     setName('');setTitle('');setCompany('');setComment('');setPublishConsent(false)
     setSubmitted(true)
     setTimeout(()=>setSubmitted(false),3000)
@@ -543,10 +535,7 @@ function HallOfFameFeedback({lang}){
   }
 
   const remoteFeedback=Array.isArray(stats?.approvedFeedback) ? stats.approvedFeedback : []
-  const publicFeedback=[...remoteFeedback,...localPublicFeedback].filter((item,index,arr)=>{
-    const key=`${item.name||''}|${item.comment||''}|${item.rating||''}`
-    return arr.findIndex(x=>`${x.name||''}|${x.comment||''}|${x.rating||''}`===key)===index
-  }).slice(0,10)
+  const publicFeedback=remoteFeedback.slice(0,10)
 
   return <div className="wall-of-fame-content">
     <div className="public-analytics-strip">
@@ -570,7 +559,7 @@ function HallOfFameFeedback({lang}){
         <div className="section-title">SHARE YOUR FEEDBACK</div>
         <form className="feedback-form" onSubmit={submitFeedback}>
           <div className="feedback-identity-grid">
-            <input value={name} onChange={e=>setName(e.target.value)} placeholder={`${tr(lang,'Your name')} (optional)`} maxLength={60}/>
+            <input value={name} onChange={e=>setName(cleanPlayerName(e.target.value,60))} placeholder={`${tr(lang,'Your name')} (optional)`} maxLength={60}/>
             <input value={title} onChange={e=>setTitle(e.target.value)} placeholder="Title (optional)" maxLength={80}/>
             <input value={company} onChange={e=>setCompany(e.target.value)} placeholder="Company (optional)" maxLength={100}/>
           </div>
@@ -578,7 +567,7 @@ function HallOfFameFeedback({lang}){
           <textarea value={comment} onChange={e=>setComment(e.target.value)} placeholder={tr(lang,'Share a quick thought about the website')} maxLength={300} rows={4}/>
           <label className="publish-consent"><input type="checkbox" checked={publishConsent} onChange={e=>setPublishConsent(e.target.checked)}/> Allow this comment to be considered for The Wall of Fame</label>
           <button type="submit" className="panel-btn feedback-btn">{tr(lang,'Post feedback')}</button>
-          {submitted && <div className="feedback-submitted">Feedback submitted ✓</div>}
+          {submitted && <div className="feedback-submitted">Feedback submission sent ✓</div>}
         </form>
       </div>
     </div>
@@ -586,7 +575,7 @@ function HallOfFameFeedback({lang}){
 }
 
 function ArenaLeaderboard(){
-  const [stats,setStats]=useState(()=>readCachedPublicStats())
+  const [stats,setStats]=useState(()=>readCachedPublicStats() && {...readCachedPublicStats(),approvedFeedback:[]})
   useEffect(()=>{ loadPublicStats(setStats) },[])
   const remotePlayers=Array.isArray(stats?.topPlayers) ? stats.topPlayers : []
   const localPlayers=buildLocalLeaderboard()
@@ -869,7 +858,7 @@ function KnowGame({onClose}){
 
     {phase==='setup' && <div className="know-stage know-setup">
       <div className="know-phase-head"><div><div className="know-kicker">MINUTE 1 · YOUR FIVE ANSWERS</div><h2>Build your behavioral fingerprint.</h2><p className="know-lead">No right or wrong answers. Pick the response that feels most like you.</p></div><div className={`know-timer ${setupLeft<=10?'urgent':''}`}>00:{String(setupLeft).padStart(2,'0')}</div></div>
-      <div className="game-player-name"><label htmlFor="know-player-name">Leaderboard name <small>optional</small></label><input id="know-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(e.target.value);storePlayerName(e.target.value)}} /></div><div className="know-timebar"><i style={{width:`${(setupLeft/60)*100}%`}}/></div>
+      <div className="game-player-name"><label htmlFor="know-player-name">Leaderboard name <small>optional</small></label><input id="know-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(cleanPlayerName(e.target.value));storePlayerName(e.target.value)}} /></div><div className="know-timebar"><i style={{width:`${(setupLeft/60)*100}%`}}/></div>
       <div className="know-question-grid">
         {[
           ['team','01','What is your team?'],['specialty','02','What is your specialty?'],['meetings','03','What are your views on meetings?'],['restaurant','04','At a restaurant, how do you usually choose?'],['free','05','What do you do with unexpected free time?']
@@ -991,7 +980,7 @@ function BelieveGame({onClose}){
       <p>You have seen the city. Now test your instincts. Two claims are true, two are invented, and two ask what you think of the person behind the portfolio.</p>
       <div className="believe-rules"><div><b>04</b><span>Believe / Not Believe</span></div><div><b>02</b><span>Your perspective</span></div><div><b>30s</b><span>Per round</span></div></div>
       <p className="believe-small">No microphone, camera, login or team required. Your perspective answers are not graded.</p>
-      <div className="game-player-name centered-name"><label htmlFor="believe-player-name">Leaderboard name <small>optional</small></label><input id="believe-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(e.target.value);storePlayerName(e.target.value)}} /></div><button className="know-primary believe-start" onClick={()=>{setPhase('playing');setSeconds(30)}}>Start BELIEVE →</button>
+      <div className="game-player-name centered-name"><label htmlFor="believe-player-name">Leaderboard name <small>optional</small></label><input id="believe-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(cleanPlayerName(e.target.value));storePlayerName(e.target.value)}} /></div><button className="know-primary believe-start" onClick={()=>{setPhase('playing');setSeconds(30)}}>Start BELIEVE →</button>
     </div>}
     {phase==='playing' && <div className="know-stage know-round-stage believe-stage">
       <div className="know-progress"><span>{current.tag}</span><div className="know-round-meta"><span>{round+1} / 6</span><b className={seconds<=10?'urgent':''}>00:{String(seconds).padStart(2,'0')}</b></div></div>
@@ -1120,7 +1109,7 @@ function ConnectGame({onClose}){
       <div className="connect-industry-grid" role="group" aria-label="Choose industry">{CONNECT_INDUSTRIES.map(id=><button type="button" aria-pressed={id===industry} className={`connect-industry ${industry===id?'selected':''}`} key={id} onClick={()=>{setIndustry(id);setVariation(0)}}><span aria-hidden="true">{CONNECT_BANKS[id].icon}</span><strong>{CONNECT_BANKS[id].label}</strong></button>)}</div>
       <div className="connect-rules"><span><b>05</b> puzzles</span><span><b>25s</b> each</span><span><b>01</b> bonus connection</span></div>
       <p className="connect-disclaimer">Curated industry word sets. AI-generated specialization is available to request after the game. Puzzles are currently in English.</p>
-      <div className="game-player-name connect-player-name"><label htmlFor="connect-player-name">Leaderboard name <small>optional</small></label><input id="connect-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(e.target.value);storePlayerName(e.target.value)}} /></div><button className="know-primary" onClick={()=>setPhase('words')}>Start CONNECT →</button>
+      <div className="game-player-name connect-player-name"><label htmlFor="connect-player-name">Leaderboard name <small>optional</small></label><input id="connect-player-name" value={playerName} maxLength={40} placeholder="Your name" onChange={e=>{setPlayerName(cleanPlayerName(e.target.value));storePlayerName(e.target.value)}} /></div><button className="know-primary" onClick={()=>setPhase('words')}>Start CONNECT →</button>
     </div>}
     {phase==='words'&&<div className="know-stage connect-play">
       <div className="know-progress"><span>WORD {round+1} / 5 · {['WARM-UP','GETTING STARTED','KEEP GOING','HARD MODE','FINAL CHALLENGE'][round]}</span><div className="know-round-meta"><span>{bank.label}</span><b className={seconds<=10?'urgent':''}>00:{String(seconds).padStart(2,'0')}</b></div></div>
@@ -1210,7 +1199,10 @@ function App(){
   const cards = useMemo(()=>localize(buildingCards, language), [language])
   const floors = useMemo(()=>localize(floorData, language), [language])
 
-  useEffect(()=>{ trackEvent('visit','','portfolio_load') },[])
+  useEffect(()=>{
+    try { localStorage.removeItem('dishit-portfolio-public-feedback-local') } catch {}
+    trackEvent('visit','','portfolio_load')
+  },[])
 
   // Desktop keeps the original wheel-driven sky. On touch devices, ordinary
   // swipes must remain available for scrolling the city and portfolio content.
@@ -1250,7 +1242,7 @@ function App(){
 
     <div className={`masthead ${focus !== 'city' ? 'hidden' : ''}`}>
       <div className="eyebrow">{tr(language,'IDEAS INTO SYSTEMS')}</div>
-      <h1>{tr(language,'Building practical systems for complex industries.')}</h1>
+      <h1>{tr(language,'Building practical solutions for complex industries.')}</h1>
       <p className="desktop-city-instructions">{tr(language,'Click a structure to explore · Scroll anywhere for the day / night transition')}</p>
     </div>
 

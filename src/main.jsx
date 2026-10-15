@@ -489,6 +489,28 @@ function HallOfFameFeedback({lang}){
   </div>
 }
 
+// Arena card counters are global totals returned by Apps Script, not browser-local attempts.
+function ArenaGameCards({primaryGames,onStartKnow,onStartBelieve,onStartConnect}){
+  const [counts,setCounts]=useState(null)
+  useEffect(()=>{
+    let active=true
+    const refresh=()=>loadPublicStats(data=>{
+      if(active && data?.gamesPlayedByGame) setCounts(data.gamesPlayedByGame)
+    })
+    refresh()
+    const timer=setInterval(refresh,30000)
+    return ()=>{active=false;clearInterval(timer)}
+  },[])
+  return <div className="game-tile-grid">{primaryGames.map(([label])=>{
+    const count=counts && Number.isFinite(Number(counts[label])) ? Number(counts[label]) : null
+    return <button key={label} type="button" onClick={label==='KNOW'?onStartKnow:label==='BELIEVE'?onStartBelieve:onStartConnect} className={`game-tile game-tile-button game-${label.toLowerCase()}`}>
+      <em>{label==='KNOW'?'You think you KNOW !':label==='BELIEVE'?'BELIEVE it or not':label==='CONNECT'?'Find the CONNECTION':label}</em>
+      {label==='KNOW'?<><strong>Know the people</strong><span>Read the room →</span></>:label==='BELIEVE'?<><strong>Judge the claims</strong><span>Can you tell what is true? →</span></>:<><strong>Complete the words</strong><span>Five clues. One connection. →</span></>}
+      <div className="game-player-result"><span className={count===null||count===0?'game-result-empty':'game-result-line'}><b>{count===null?'—':count}</b> {count===1?'game':'games'} played</span></div>
+    </button>
+  })}</div>
+}
+
 function ArenaLeaderboard(){
   const [stats,setStats]=useState(null)
   useEffect(()=>{ loadPublicStats(setStats); const id=setInterval(()=>loadPublicStats(setStats),30000); return ()=>clearInterval(id) },[])
@@ -615,17 +637,9 @@ function FloorDetail({card, lang, onStartKnow, onStartBelieve, onStartConnect}){
   </>
 
   if(card.id === 'game') {
-    const gameResults=loadGameResults()
-    const resultLine=(label)=>{
-      const attempts=Math.max(0,Number(gameResults[label]?.attempts)||0)
-      return <span className={attempts?'game-result-line':'game-result-empty'}><b>{attempts}</b> {attempts===1?'game':'games'} played</span>
-    }
     return <>
       <div className="compact-hero floor-hero lively-game-hero"><div className="hero-icon">{card.icon}</div><div><div className="compact-title">{card.name}</div><div className="compact-role">{card.art}</div></div></div>
-      <div className="compact-card floor-wide-card game-lounge-card"><div className="section-title">{tr(lang,'Core games')}</div><div className="game-intro"><strong>Three quick portfolio games.</strong><span>Play to understand the work, the profile, and the interactive style behind the site.</span></div><div className="game-tile-grid">{card.primaryGames.map(([label])=> <button key={label} type="button" onClick={label==='KNOW'?onStartKnow:label==='BELIEVE'?onStartBelieve:onStartConnect} className={`game-tile game-tile-button game-${label.toLowerCase()}`}><em>{label === 'KNOW' ? 'You think you KNOW !' :
-  label === 'BELIEVE' ? 'BELIEVE it or not' :
-  label === 'CONNECT' ? 'Find the CONNECTION' :
-  label}</em>{label==='KNOW' ?  <><strong>Know the people</strong><span>Read the room →</span></> : label==='BELIEVE' ? <><strong>Judge the claims</strong><span>Can you tell what is true? →</span></> : <><strong>Complete the words</strong><span>Five clues. One connection. →</span></>}<div className="game-player-result">{resultLine(label)}</div></button>)}</div><ArenaLeaderboard /></div>
+      <div className="compact-card floor-wide-card game-lounge-card"><div className="section-title">{tr(lang,'Core games')}</div><div className="game-intro"><strong>Three quick portfolio games.</strong><span>Play to understand the work, the profile, and the interactive style behind the site.</span></div><ArenaGameCards primaryGames={card.primaryGames} onStartKnow={onStartKnow} onStartBelieve={onStartBelieve} onStartConnect={onStartConnect}/><ArenaLeaderboard /></div>
     </>
   }
 
